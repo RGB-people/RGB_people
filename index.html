@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RGB_people - portfolio</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #000;
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .section {
+      padding: 5rem 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .avatar-container {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin: 0 auto 2rem;
+      border: 3px solid rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .avatar-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .rgb-text {
+      display: inline-block;
+    }
+
+    .rgb-letter {
+      display: inline-block;
+      animation: rgbCycle 3s infinite;
+    }
+
+    .rgb-letter:nth-child(1) { animation-delay: 0s; }
+    .rgb-letter:nth-child(2) { animation-delay: 0.1s; }
+    .rgb-letter:nth-child(3) { animation-delay: 0.2s; }
+    .rgb-letter:nth-child(4) { animation-delay: 0.3s; }
+
+    @keyframes rgbCycle {
+      0% { color: rgb(255, 0, 0); }
+      33% { color: rgb(0, 255, 0); }
+      66% { color: rgb(0, 0, 255); }
+      100% { color: rgb(255, 0, 0); }
+    }
+
+    .social-icons-container {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .social-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      color: rgba(255, 255, 255, 0.7);
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .social-icon:nth-child(1) { animation-delay: 0.1s; }
+    .social-icon:nth-child(2) { animation-delay: 0.2s; }
+    .social-icon:nth-child(3) { animation-delay: 0.3s; }
+    .social-icon:nth-child(4) { animation-delay: 0.4s; }
+    .social-icon:nth-child(5) { animation-delay: 0.5s; }
+    .social-icon:nth-child(6) { animation-delay: 0.6s; }
+    .social-icon:nth-child(7) { animation-delay: 0.7s; }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .social-icon:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-5px) scale(1.1);
+      color: #fff;
+    }
+
+    .skills-section-large {
+      padding-top: 5rem;
+    }
+
+    .skills-title {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 3rem;
+      background: linear-gradient(90deg, #ff0080, #00ffff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: slideInFromLeft 1s ease-out;
+    }
+
+    @keyframes slideInFromLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .skill-category {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .skill-category:nth-child(1) { animation-delay: 0.2s; }
+    .skill-category:nth-child(2) { animation-delay: 0.4s; }
+    .skill-category:nth-child(3) { animation-delay: 0.6s; }
+
+    .skill-category:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .skill-header {
+      margin-bottom: 1rem;
+    }
+
+    .skill-category-title {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: rgb(90, 90, 90);
+      transition: color 0.3s ease;
+    }
+
+    .skill-category:hover .skill-category-title {
+      color: rgb(120, 120, 120);
+    }
+
+    .skill-category-description {
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.6;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .stat-item:nth-child(1) { animation-delay: 0.1s; }
+    .stat-item:nth-child(2) { animation-delay: 0.2s; }
+    .stat-item:nth-child(3) { animation-delay: 0.3s; }
+    .stat-item:nth-child(4) { animation-delay: 0.4s; }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(90deg, #ff0080, #00ffff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .stat-label {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .projects-section-large {
+      padding-top: 5rem;
+    }
+
+    .projects-title {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 3rem;
+      background: linear-gradient(90deg, #00ffff, #ffff00);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: slideInFromRight 1s ease-out;
+    }
+
+    @keyframes slideInFromRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .project-item {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .project-item:nth-child(1) { animation-delay: 0.2s; }
+    .project-item:nth-child(2) { animation-delay: 0.4s; }
+    .project-item:nth-child(3) { animation-delay: 0.6s; }
+
+    .project-item:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateX(10px);
+    }
+
+    .project-header {
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .project-title {
+      font-size: 1.3rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .project-arrow {
+      transition: transform 0.3s ease;
+    }
+
+    .project-details {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+    }
+
+    .project-content {
+      padding: 0 1.5rem 1.5rem;
+    }
+
+    .project-bot-name {
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 1rem;
+    }
+
+    .project-description {
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .languages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .language-item {
+      text-align: center;
+      padding: 1rem 0.5rem;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      transition: all 0.3s ease;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .language-item:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-5px) scale(1.05);
+    }
+
+    .language-name {
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+
+    .playlist-section {
+      padding-top: 5rem;
+    }
+
+    .playlist-title {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 3rem;
+      background: linear-gradient(90deg, #00ffff, #ff0080);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: slideInFromLeft 1s ease-out;
+    }
+
+    .playlist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .playlist-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.5rem;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .playlist-item:nth-child(1) { animation-delay: 0.2s; }
+    .playlist-item:nth-child(2) { animation-delay: 0.4s; }
+
+    .playlist-item:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-5px) rotate(1deg);
+    }
+
+    .playlist-img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .playlist-item:hover .playlist-img {
+      transform: scale(1.1);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .playlist-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .playlist-name {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .footer {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 3rem 1.5rem 1.5rem;
+      margin-top: 5rem;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .email-contact {
+      text-align: center;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 1.1rem;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+    }
+
+    .footer-copyright {
+      color: rgba(255, 255, 255, 0.7);
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .skills-grid, .stats-grid, .playlist-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main id="main-content">
+    <!-- HERO -->
+    <section id="hero" class="section hero-section">
+      <div class="hero-inner">
+        <div class="mb-12 flex justify-center">
+          <div class="avatar-container" aria-hidden="true">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/830f3ba7-517f-4ded-85be-fdb70c406b67-profile_image-70x70.png" alt="RGB_people" class="avatar-image" loading="lazy" />
+          </div>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="rgb-text">
+            <span class="rgb-letter" style="color: rgb(255, 0, 0)">R</span>
+            <span class="rgb-letter" style="color: rgb(0, 255, 0)">G</span>
+            <span class="rgb-letter" style="color: rgb(0, 0, 255)">B</span>
+            <span class="rgb-letter" style="color: rgb(20, 20, 20)">_people</span>
+          </span>
+        </h1>
+
+        <div class="social-icons-container" role="navigation" aria-label="Социальные сети">
+          <a href="https://mynickname.com/RGB_people" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="MyNickName">
+            <i class="fas fa-user"></i>
+          </a>
+
+          <a href="https://steamcommunity.com/profiles/76561199651372132/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Steam">
+            <i class="fab fa-steam"></i>
+          </a>
+
+          <a href="https://github.com/RGB-people" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+
+          <a href="https://youtube.com/rgb_people" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="YouTube">
+            <i class="fab fa-youtube"></i>
+          </a>
+
+          <a href="https://vk.com/rgbpeople" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="VK">
+            <i class="fab fa-vk"></i>
+          </a>
+
+          <a href="https://www.twitch.tv/rgb_people" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Twitch">
+            <i class="fab fa-twitch"></i>
+          </a>
+
+          <a href="https://www.tiktok.com/@rgb_people" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="TikTok">
+            <i class="fab fa-tiktok"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section skills-section-large">
+      <div class="skills-container">
+        <h2 class="skills-title">Мои навыки</h2>
+
+        <div class="skills-grid">
+          <div class="skill-category">
+            <div class="skill-header">
+              <h3 class="skill-category-title">Разработка ПО</h3>
+            </div>
+            <div class="skill-content">
+              <p class="skill-category-description">
+                Создание программного обеспечения различной сложности.<br><br>
+                - <strong>Системное программирование</strong><br>
+                - <strong>Веб-разработка</strong><br>
+                - <strong>AI kamet для ОС</strong>
+              </p>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-header">
+              <h3 class="skill-category-title">Технологии</h3>
+            </div>
+            <div class="skill-content">
+              <p class="skill-category-description">
+                - <strong>HTML/CSS/JavaScript</strong><br>
+                - <strong>Python</strong><br>
+                - <strong>C/C++</strong><br>
+                - <strong>Assembler</strong><br>
+                - <strong>Java</strong><br>
+                - <strong>Базы данных</strong>
+              </p>
+            </div>
+          </div>
+
+          <div class="skill-category" style="grid-column: 1 / -1; max-width: 400px; margin: 0 auto;">
+            <div class="skill-header">
+              <h3 class="skill-category-title">Операционные системы</h3>
+            </div>
+            <div class="skill-content">
+              <p class="skill-category-description">
+                Разработка и исследование операционных систем.<br><br>
+                - <strong>Разработка ОС</strong><br>
+                - <strong>AI kamet для ОС</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="languages-grid">
+          <div class="language-item">
+            <div class="social-icon" style="color: #e44d26;">
+              <i class="fab fa-html5"></i>
+            </div>
+            <div class="language-name">HTML</div>
+          </div>
+
+          <div class="language-item">
+            <div class="social-icon" style="color: #f7df1e;">
+              <i class="fab fa-js"></i>
+            </div>
+            <div class="language-name">JavaScript</div>
+          </div>
+
+          <div class="language-item">
+            <div class="social-icon" style="color: #00599c;">
+              <i class="fas fa-code"></i>
+            </div>
+            <div class="language-name">C</div>
+          </div>
+
+          <div class="language-item">
+            <div class="social-icon" style="color: #6d4ba4;">
+              <i class="fas fa-microchip"></i>
+            </div>
+            <div class="language-name">Assembler</div>
+          </div>
+
+          <div class="language-item">
+            <div class="social-icon" style="color: #ed8b00;">
+              <i class="fab fa-java"></i>
+            </div>
+            <div class="language-name">Java</div>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Запущенных проекта</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">0</div>
+            <div class="stat-label">Пользователей</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">&lt;1</div>
+            <div class="stat-label">Года разработки</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">75%</div>
+            <div class="stat-label">Самообучение</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects-section" class="section projects-section-large">
+      <div class="projects-section">
+        <h2 class="projects-title">Мои проекты</h2>
+
+        <div class="project-item" tabindex="0" role="button" aria-expanded="false">
+          <div class="project-header">
+            <h3 class="project-title">3D model lib</h3>
+            <div class="project-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7.41 8.84L12 13.42l4.59-4.58L18 10.25l-6 6-6-6z"/>
+              </svg>
+            </div>
+          </div>
+
+          <div id="project1-details" class="project-details" aria-hidden="true">
+            <div class="project-content">
+              <p class="project-description">Мод-библиотека для импорта 3D моделей (.obj .bbmodel .gltf .mdl (формат для Half-Life) и .fbx) в майнкрафт</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-item" tabindex="0" role="button" aria-expanded="false">
+          <div class="project-header">
+            <h3 class="project-title">kamet</h3>
+            <div class="project-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7.41 8.84L12 13.42l4.59-4.58L18 10.25l-6 6-6-6z"/>
+              </svg>
+            </div>
+          </div>
+
+          <div id="project2-details" class="project-details" aria-hidden="true">
+            <div class="project-content">
+              <p class="project-description">AI для Amethyst OS</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-item" tabindex="0" role="button" aria-expanded="false">
+          <div class="project-header">
+            <h3 class="project-title">Amethyst OS</h3>
+            <div class="project-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7.41 8.84L12 13.42l4.59-4.58L18 10.25l-6 6-6-6z"/>
+              </svg>
+            </div>
+          </div>
+
+          <div id="project3-details" class="project-details" aria-hidden="true">
+            <div class="project-content">
+              <p class="project-description">Не просто ОС для ПК, а что то более</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLAYLIST -->
+    <section id="playlist" class="section playlist-section">
+      <div class="playlist-container">
+        <h2 class="playlist-title">Мой плейлист</h2>
+
+        <div class="playlist-grid">
+          <div class="playlist-item">
+            <div class="playlist-img">
+              <img src="https://avatars.yandex.net/get-music-content/95061/1d46a945.p.41052/300x300" alt="КиШ">
+            </div>
+            <div class="playlist-name">Король и Шут</div>
+          </div>
+
+          <div class="playlist-item">
+            <div class="playlist-img">
+              <img src="https://avatars.yandex.net/get-music-content/33216/c6d507c7.p.41075/300x300" alt="Кино">
+            </div>
+            <div class="playlist-name">Кино</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="email-contact">
+        Почта для связи: golowachev.dan@gmail.com
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copyright">
+        RGB_people
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Анимация для раскрывающихся проектов
+    document.addEventListener('DOMContentLoaded', function() {
+      const projectItems = document.querySelectorAll('.project-item');
+
+      projectItems.forEach(item => {
+        const header = item.querySelector('.project-header');
+        const details = item.querySelector('.project-details');
+        const arrow = item.querySelector('.project-arrow');
+
+        header.addEventListener('click', () => {
+          const isExpanded = item.getAttribute('aria-expanded') === 'true';
+
+          if (isExpanded) {
+            details.style.maxHeight = '0';
+            item.setAttribute('aria-expanded', 'false');
+            arrow.style.transform = 'rotate(0deg)';
+          } else {
+            details.style.maxHeight = details.scrollHeight + 'px';
+            item.setAttribute('aria-expanded', 'true');
+            arrow.style.transform = 'rotate(180deg)';
+          }
+        });
+      });
+
+      // Инициализация GSAP анимаций
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Анимация появления элементов при скролле
+      gsap.utils.toArray('.skill-category, .project-item, .playlist-item, .stat-item').forEach(element => {
+        gsap.fromTo(element, {
+          opacity: 0,
+          y: 50
+        }, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          scrollTrigger: {
+            trigger: element,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse"
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
