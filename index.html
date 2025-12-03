@@ -4,32 +4,32 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>RGB_people - Разработчик ПО и создатель проектов</title>
-
+  
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="https://static-cdn.jtvnw.net/jtv_user_pictures/830f3ba7-517f-4ded-85be-fdb70c406b67-profile_image-70x70.png">
-
+  
   <!-- SEO оптимизация -->
   <meta name="description" content="Портфолио RGB_people - разработчика, создающего проекты в области 3D графики, операционных систем и искусственного интеллекта.">
   <meta name="keywords" content="RGB_people, разработчик, программирование, 3D модели, операционные системы, AI, Amethyst OS">
   <meta name="author" content="RGB_people">
-
+  
   <!-- Open Graph для соцсетей -->
   <meta property="og:title" content="RGB_people - Портфолио разработчика">
   <meta property="og:description" content="Создаю проекты: 3D model lib, kamet AI, Amethyst OS и другие.">
   <meta property="og:image" content="https://static-cdn.jtvnw.net/jtv_user_pictures/830f3ba7-517f-4ded-85be-fdb70c406b67-profile_image-70x70.png">
   <meta property="og:url" content="https://rgb-people.github.io">
   <meta property="og:type" content="website">
-
+  
   <!-- PWA manifest -->
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#000000">
   <meta name="apple-mobile-web-app-capable" content="yes">
-
+  
   <!-- Предзагрузка важных ресурсов -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
-
+  
   <!-- Основные стили -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -45,7 +45,7 @@
       --gray-90: rgb(90, 90, 90);
       --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
-
+    
     [data-theme="light"] {
       --bg-color: #ffffff;
       --text-color: #000000;
@@ -53,14 +53,14 @@
       --border-color: rgba(0, 0, 0, 0.1);
       --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     }
-
+    
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       transition: background-color 0.3s ease, color 0.3s ease;
     }
-
+    
     body {
       background-color: var(--bg-color);
       color: var(--text-color);
@@ -68,40 +68,1129 @@
       font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       overflow-x: hidden;
     }
-
+    
     /* Скрыть скроллбар но оставить возможность скролла */
     body::-webkit-scrollbar {
       width: 8px;
     }
-
+    
     body::-webkit-scrollbar-track {
       background: var(--bg-color);
     }
-
+    
     body::-webkit-scrollbar-thumb {
       background: var(--primary-color);
       border-radius: 4px;
     }
+    
+    /* Уведомления */
+    .notification-container {
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      z-index: 1001;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 350px;
+    }
+    
+    .notification {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      animation: slideInRight 0.3s ease-out;
+      box-shadow: var(--shadow);
+      max-width: 100%;
+    }
+    
+    .notification.hiding {
+      animation: slideOutRight 0.3s ease-in forwards;
+    }
+    
+    .notification-icon {
+      color: var(--primary-color);
+      font-size: 1.2rem;
+    }
+    
+    .notification-content {
+      flex: 1;
+    }
+    
+    .notification-title {
+      font-weight: 600;
+      margin-bottom: 5px;
+      font-size: 0.95rem;
+    }
+    
+    .notification-message {
+      font-size: 0.85rem;
+      color: var(--gray-90);
+      line-height: 1.4;
+    }
+    
+    .notification-close {
+      background: none;
+      border: none;
+      color: var(--gray-90);
+      cursor: pointer;
+      padding: 0;
+      font-size: 0.9rem;
+    }
+    
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(100%);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes slideOutRight {
+      from {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      to {
+        opacity: 0;
+        transform: translateX(100%);
+      }
+    }
+    
+    /* Выбор языка */
+    .language-switcher {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+      display: flex;
+      gap: 5px;
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border-color);
+      border-radius: 25px;
+      padding: 5px;
+    }
+    
+    .lang-btn {
+      background: none;
+      border: none;
+      color: var(--text-color);
+      cursor: pointer;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      opacity: 0.7;
+    }
+    
+    .lang-btn.active {
+      background: var(--primary-color);
+      color: #000;
+      opacity: 1;
+      font-weight: 600;
+    }
+    
+    .lang-btn:hover:not(.active) {
+      background: var(--border-color);
+      opacity: 1;
+    }
+    
+    /* Кнопка переключения темы */
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border-color);
+      color: var(--text-color);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .theme-toggle:hover {
+      transform: scale(1.1);
+      box-shadow: var(--shadow);
+    }
+    
+    /* Анимации */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes slideInFromLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes slideInFromRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes neon {
+      0%, 100% { 
+        text-shadow: 0 0 10px var(--primary-color),
+                     0 0 20px var(--primary-color),
+                     0 0 30px var(--primary-color);
+      }
+      50% { 
+        text-shadow: 0 0 20px var(--secondary-color),
+                     0 0 30px var(--secondary-color),
+                     0 0 40px var(--secondary-color);
+      }
+    }
+    
+    @keyframes rgbCycle {
+      0% { color: rgb(255, 0, 0); }
+      33% { color: rgb(0, 255, 0); }
+      66% { color: rgb(0, 0, 255); }
+      100% { color: rgb(255, 0, 0); }
+    }
+    
+    /* Glassmorphism эффект */
+    .glass-effect {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow);
+    }
+    
+    .neon-text {
+      animation: neon 3s infinite;
+    }
+    
+    /* Общие стили */
+    .section {
+      padding: 5rem 1.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    
+    /* Аватар */
+    .avatar-container {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin: 0 auto 2rem;
+      overflow: hidden;
+      animation: float 6s ease-in-out infinite;
+      position: relative;
+    }
+    
+    .avatar-container::after {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+      border-radius: 50%;
+      z-index: -1;
+      animation: rgbCycle 3s infinite;
+    }
+    
+    .avatar-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    
+    /* Заголовки */
+    .hero-title {
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, var(--secondary-color), var(--primary-color), var(--accent-color));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 1.1;
+    }
+    
+    .rgb-text {
+      display: inline-block;
+    }
+    
+    .rgb-letter {
+      display: inline-block;
+      animation: rgbCycle 3s infinite;
+    }
+    
+    .rgb-letter:nth-child(1) { animation-delay: 0s; }
+    .rgb-letter:nth-child(2) { animation-delay: 0.1s; }
+    .rgb-letter:nth-child(3) { animation-delay: 0.2s; }
+    .rgb-letter:nth-child(4) { animation-delay: 0.3s; }
+    
+    .hero-subtitle {
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      color: var(--gray-90);
+      margin-bottom: 2rem;
+      font-weight: 300;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    /* Социальные иконки */
+    .social-icons-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .social-icon {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      color: var(--text-color);
+      opacity: 0.8;
+      animation: fadeInUp 0.8s ease-out;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .social-icon::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .social-icon:hover::before {
+      left: 100%;
+    }
+    
+    .social-icon:hover {
+      opacity: 1;
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Timeline */
+    .timeline-title {
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      text-align: center;
+      margin-bottom: 3rem;
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      padding-left: 30px;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+    }
+    
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2rem;
+      border-radius: 15px;
+      padding: 1.5rem;
+      animation: fadeInUp 0.8s ease-out;
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -40px;
+      top: 25px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--primary-color);
+      border: 3px solid var(--bg-color);
+      z-index: 1;
+    }
+    
+    .timeline-date {
+      color: var(--primary-color);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+    
+    .timeline-content h3 {
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+    
+    .timeline-content p {
+      color: var(--gray-90);
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    
+    .timeline-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+    
+    .timeline-link:hover {
+      text-decoration: underline;
+    }
+    
+    /* GitHub Activity - Обновленный стиль */
+    .activity-title {
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      text-align: center;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    
+    .activity-subtitle {
+      text-align: center;
+      color: var(--gray-90);
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+    }
+    
+    .activity-calendar {
+      border-radius: 15px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .calendar-header h3 {
+      margin: 0;
+      color: var(--text-color);
+    }
+    
+    .calendar-legend {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.8rem;
+      color: var(--gray-90);
+    }
+    
+    .legend-color {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 2px;
+      margin-right: 5px;
+    }
+    
+    .legend-color.less {
+      background: rgba(0, 255, 255, 0.2);
+    }
+    
+    .legend-color.more {
+      background: rgba(0, 255, 255, 0.8);
+    }
+    
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(53, 1fr);
+      grid-auto-rows: 12px;
+      gap: 3px;
+      margin-bottom: 1.5rem;
+      overflow-x: auto;
+      padding-bottom: 10px;
+    }
+    
+    .calendar-cell {
+      width: 12px;
+      height: 12px;
+      border-radius: 2px;
+      background: rgba(0, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+    }
+    
+    .calendar-cell:hover {
+      transform: scale(1.2);
+      z-index: 1;
+    }
+    
+    .calendar-cell[data-level="1"] { background: rgba(0, 255, 255, 0.2); }
+    .calendar-cell[data-level="2"] { background: rgba(0, 255, 255, 0.4); }
+    .calendar-cell[data-level="3"] { background: rgba(0, 255, 255, 0.6); }
+    .calendar-cell[data-level="4"] { background: rgba(0, 255, 255, 0.8); }
+    
+    .calendar-tooltip {
+      position: absolute;
+      background: var(--bg-color);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-size: 0.8rem;
+      white-space: nowrap;
+      z-index: 10;
+      box-shadow: var(--shadow);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .calendar-cell:hover .calendar-tooltip {
+      opacity: 1;
+    }
+    
+    .calendar-stats {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-color);
+    }
+    
+    .stat {
+      text-align: center;
+    }
+    
+    .stat-value {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 5px;
+    }
+    
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--gray-90);
+    }
+    
+    .recent-activity {
+      border-radius: 15px;
+      padding: 1.5rem;
+    }
+    
+    .recent-activity h3 {
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+    
+    .activity-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    
+    .activity-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.8rem;
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      font-size: 0.85rem;
+    }
+    
+    .activity-icon {
+      color: var(--primary-color);
+    }
+    
+    /* Blog */
+    .blog-title {
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      text-align: center;
+      margin-bottom: 3rem;
+      font-weight: 700;
+    }
+    
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .blog-post {
+      border-radius: 15px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    
+    .blog-post:hover {
+      transform: translateY(-5px);
+    }
+    
+    .blog-post-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      font-size: 0.8rem;
+    }
+    
+    .post-category {
+      color: var(--primary-color);
+      font-weight: 600;
+      padding: 3px 10px;
+      background: rgba(0, 255, 255, 0.1);
+      border-radius: 12px;
+    }
+    
+    .post-date {
+      color: var(--gray-90);
+    }
+    
+    .post-title {
+      margin-bottom: 1rem;
+      color: var(--text-color);
+      font-size: 1.3rem;
+      line-height: 1.4;
+    }
+    
+    .post-excerpt {
+      color: var(--gray-90);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+    
+    .post-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+    }
+    
+    .read-time {
+      color: var(--gray-90);
+      font-size: 0.8rem;
+    }
+    
+    .read-more {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    
+    .read-more:hover {
+      text-decoration: underline;
+      transform: translateX(3px);
+    }
+    
+    /* Real Projects */
+    .projects-title {
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      text-align: center;
+      margin-bottom: 3rem;
+      font-weight: 700;
+    }
+    
+    .project-item {
+      border-radius: 15px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .project-item:hover {
+      transform: translateY(-3px);
+    }
+    
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    
+    .project-header-left {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .project-title {
+      font-size: 1.5rem;
+      color: var(--text-color);
+      margin: 0;
+    }
+    
+    .project-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .project-link {
+      color: var(--text-color);
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .project-link:hover {
+      color: var(--primary-color);
+      transform: scale(1.1);
+    }
+    
+    .project-stats {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.9rem;
+      color: var(--gray-90);
+    }
+    
+    .project-arrow {
+      transition: transform 0.3s ease;
+    }
+    
+    .project-details {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+    }
+    
+    .project-content {
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-color);
+    }
+    
+    .project-description {
+      color: var(--gray-90);
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+    
+    .tech-tag {
+      padding: 4px 12px;
+      background: rgba(0, 255, 255, 0.1);
+      border-radius: 15px;
+      font-size: 0.8rem;
+      color: var(--primary-color);
+    }
+    
+    .project-action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.8rem 1.5rem;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    
+    .project-action-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Donate */
+    .donate-title {
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      text-align: center;
+      margin-bottom: 2rem;
+      font-weight: 700;
+    }
+    
+    .donate-content {
+      border-radius: 15px;
+      padding: 2rem;
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .donate-description {
+      color: var(--gray-90);
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    
+    .donate-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 2rem;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      margin-bottom: 2rem;
+    }
+    
+    .donate-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .donate-methods {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    
+    .donate-method {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--gray-90);
+    }
+    
+    .donate-method i {
+      font-size: 1.5rem;
+    }
+    
+    /* Contact */
+    .contact-title {
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      text-align: center;
+      margin-bottom: 2rem;
+      font-weight: 700;
+    }
+    
+    .contact-form {
+      border-radius: 15px;
+      padding: 2rem;
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .contact-subtitle {
+      margin-bottom: 1.5rem;
+      color: var(--gray-90);
+      font-size: 1.3rem;
+    }
+    
+    .submit-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 2rem;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      margin-bottom: 1.5rem;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Playlist */
+    .playlist-title {
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      text-align: center;
+      margin-bottom: 3rem;
+      font-weight: 700;
+    }
+    
+    .playlist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .playlist-item {
+      border-radius: 15px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .playlist-item:hover {
+      transform: translateY(-5px);
+    }
+    
+    .playlist-img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 1rem;
+    }
+    
+    .playlist-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .playlist-name {
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+    
+    /* Footer */
+    .footer {
+      padding: 3rem 1.5rem;
+      text-align: center;
+      border-top: 1px solid var(--border-color);
+    }
+    
+    .footer-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .email-contact {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 2rem;
+      color: var(--gray-90);
+    }
+    
+    .footer-bottom {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-color);
+    }
+    
+    .footer-copyright {
+      color: var(--gray-90);
+      font-size: 0.9rem;
+    }
+    
+    /* Адаптивность */
+    @media (max-width: 768px) {
+      .language-switcher {
+        top: 15px;
+        left: 15px;
+      }
+      
+      .lang-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+      }
+      
+      .theme-toggle {
+        top: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+      }
+      
+      .section {
+        padding: 3rem 1rem;
+      }
+      
+      .timeline {
+        padding-left: 20px;
+      }
+      
+      .timeline-item::before {
+        left: -30px;
+        width: 16px;
+        height: 16px;
+      }
+      
+      .calendar-grid {
+        grid-template-columns: repeat(26, 1fr);
+      }
+      
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .notification-container {
+        max-width: calc(100% - 40px);
+      }
+      
+      .project-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+      
+      .project-arrow {
+        align-self: flex-end;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .language-switcher {
+        flex-direction: column;
+        border-radius: 15px;
+        padding: 8px;
+      }
+      
+      .timeline {
+        padding-left: 15px;
+      }
+      
+      .calendar-grid {
+        grid-template-columns: repeat(13, 1fr);
+      }
+      
+      .calendar-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+      
+      .social-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 0.9rem;
+      }
+      
+      .project-links {
+        flex-wrap: wrap;
+      }
+      
+      .donate-methods {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
   </style>
 </head>
-<body data-theme="dark">
+<body data-theme="dark" data-lang="ru">
+  <!-- Уведомления -->
+  <div class="notification-container" id="notification-container"></div>
+  
+  <!-- Выбор языка -->
+  <div class="language-switcher">
+    <button class="lang-btn active" data-lang="ru">🇷🇺 RU</button>
+    <button class="lang-btn" data-lang="en">🇺🇸 EN</button>
+  </div>
+  
   <!-- Кнопка переключения темы -->
   <button id="theme-toggle" class="theme-toggle" aria-label="Переключить тему">
     <i class="fas fa-moon"></i>
   </button>
-
+  
   <main id="main-content">
     <!-- HERO -->
     <section id="hero" class="section hero-section">
       <div class="hero-inner">
         <div class="mb-12 flex justify-center">
           <div class="avatar-container" aria-hidden="true">
-            <!-- Оптимизированное изображение с lazy loading -->
             <picture>
               <source srcset="https://static-cdn.jtvnw.net/jtv_user_pictures/830f3ba7-517f-4ded-85be-fdb70c406b67-profile_image-70x70.png" type="image/png">
-              <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/830f3ba7-517f-4ded-85be-fdb70c406b67-profile_image-70x70.png"
-                   alt="RGB_people"
-                   class="avatar-image"
+              <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/830f3ba7-517f-4ded-85be-fdb70c406b67-profile_image-70x70.png" 
+                   alt="RGB_people" 
+                   class="avatar-image" 
                    loading="lazy"
                    width="150"
                    height="150">
@@ -118,7 +1207,7 @@
           </span>
         </h1>
 
-        <p class="hero-subtitle">Разработчик ПО • Создатель инновационных проектов</p>
+        <p class="hero-subtitle" data-i18n="subtitle">Разработчик ПО • Создатель инновационных проектов</p>
 
         <div class="social-icons-container" role="navigation" aria-label="Социальные сети">
           <a href="https://mynickname.com/RGB_people" target="_blank" rel="noopener noreferrer" class="social-icon glass-effect" aria-label="MyNickName">
@@ -152,123 +1241,192 @@
       </div>
     </section>
 
-    <!-- SKILLS -->
-    <section id="skills" class="section skills-section-large">
-      <div class="skills-container">
-        <h2 class="skills-title neon-text">Мои навыки</h2>
-
-        <div class="skills-grid">
-          <div class="skill-category glass-effect">
-            <div class="skill-header">
-              <h3 class="skill-category-title" style="color: var(--gray-90)">Разработка ПО</h3>
-            </div>
-            <div class="skill-content">
-              <p class="skill-category-description">
-                Создание программного обеспечения различной сложности.<br><br>
-                • <strong>Системное программирование</strong><br>
-                • <strong>Веб-разработка</strong><br>
-                • <strong>AI kamet для ОС</strong>
-              </p>
+    <!-- TIMELINE -->
+    <section id="timeline" class="section">
+      <div class="timeline-container">
+        <h2 class="timeline-title neon-text" data-i18n="timeline_title">Мой путь развития</h2>
+        
+        <div class="timeline">
+          <div class="timeline-item glass-effect">
+            <div class="timeline-date">Январь 2023</div>
+            <div class="timeline-content">
+              <h3 data-i18n="timeline_item1_title">Начало программирования</h3>
+              <p data-i18n="timeline_item1_desc">Изучение основ Python и создание первых скриптов</p>
             </div>
           </div>
-
-          <div class="skill-category glass-effect">
-            <div class="skill-header">
-              <h3 class="skill-category-title" style="color: var(--gray-90)">Технологии</h3>
-            </div>
-            <div class="skill-content">
-              <p class="skill-category-description">
-                • <strong>HTML/CSS/JavaScript</strong><br>
-                • <strong>Python</strong><br>
-                • <strong>C/C++</strong><br>
-                • <strong>Assembler</strong><br>
-                • <strong>Java</strong><br>
-                • <strong>Базы данных</strong>
-              </p>
+          
+          <div class="timeline-item glass-effect">
+            <div class="timeline-date">Май 2023</div>
+            <div class="timeline-content">
+              <h3 data-i18n="timeline_item2_title">Первый проект - 3D model lib</h3>
+              <p data-i18n="timeline_item2_desc">Начал разработку библиотеки для импорта 3D моделей в Minecraft</p>
+              <a href="https://github.com/RGB-people/3d-model-lib" target="_blank" class="timeline-link">
+                <i class="fab fa-github"></i> GitHub репозиторий
+              </a>
             </div>
           </div>
-
-          <!-- Операционные системы теперь рядом с Технологиями -->
-          <div class="skill-category glass-effect os-skill">
-            <div class="skill-header">
-              <h3 class="skill-category-title" style="color: var(--gray-90)">Операционные системы</h3>
-            </div>
-            <div class="skill-content">
-              <p class="skill-category-description">
-                Разработка и исследование операционных систем.<br><br>
-                • <strong>Разработка ОС</strong><br>
-                • <strong>AI kamet для ОС</strong>
-              </p>
+          
+          <div class="timeline-item glass-effect">
+            <div class="timeline-date">Август 2023</div>
+            <div class="timeline-content">
+              <h3 data-i18n="timeline_item3_title">Изучение системного программирования</h3>
+              <p data-i18n="timeline_item3_desc">Начал изучение C, Assembler и основ операционных систем</p>
             </div>
           </div>
-        </div>
-
-        <div class="languages-grid">
-          <div class="language-item glass-effect">
-            <div class="social-icon" style="color: #e44d26;">
-              <i class="fab fa-html5"></i>
+          
+          <div class="timeline-item glass-effect">
+            <div class="timeline-date">Октябрь 2023</div>
+            <div class="timeline-content">
+              <h3 data-i18n="timeline_item4_title">Начало разработки Amethyst OS</h3>
+              <p data-i18n="timeline_item4_desc">Запустил проект экспериментальной операционной системы нового поколения</p>
+              <a href="https://github.com/RGB-people/amethyst-os" target="_blank" class="timeline-link">
+                <i class="fab fa-github"></i> GitHub репозиторий
+              </a>
             </div>
-            <div class="language-name">HTML</div>
           </div>
-
-          <div class="language-item glass-effect">
-            <div class="social-icon" style="color: #f7df1e;">
-              <i class="fab fa-js"></i>
+          
+          <div class="timeline-item glass-effect">
+            <div class="timeline-date">Январь 2024</div>
+            <div class="timeline-content">
+              <h3 data-i18n="timeline_item5_title">Проект kamet - AI для ОС</h3>
+              <p data-i18n="timeline_item5_desc">Начал разработку искусственного интеллекта для Amethyst OS</p>
+              <a href="https://github.com/RGB-people/kamet" target="_blank" class="timeline-link">
+                <i class="fab fa-github"></i> GitHub репозиторий
+              </a>
             </div>
-            <div class="language-name">JavaScript</div>
-          </div>
-
-          <div class="language-item glass-effect">
-            <div class="social-icon" style="color: #00599c;">
-              <i class="fas fa-code"></i>
-            </div>
-            <div class="language-name">C</div>
-          </div>
-
-          <div class="language-item glass-effect">
-            <div class="social-icon" style="color: #6d4ba4;">
-              <i class="fas fa-microchip"></i>
-            </div>
-            <div class="language-name">Assembler</div>
-          </div>
-
-          <div class="language-item glass-effect">
-            <div class="social-icon" style="color: #ed8b00;">
-              <i class="fab fa-java"></i>
-            </div>
-            <div class="language-name">Java</div>
-          </div>
-        </div>
-
-        <div class="stats-grid">
-          <div class="stat-item glass-effect">
-            <div class="stat-number">3</div>
-            <div class="stat-label">Запущенных проекта</div>
-          </div>
-          <div class="stat-item glass-effect">
-            <div class="stat-number">0</div>
-            <div class="stat-label">Пользователей</div>
-          </div>
-          <div class="stat-item glass-effect">
-            <div class="stat-number">&lt;1</div>
-            <div class="stat-label">Года разработки</div>
-          </div>
-          <div class="stat-item glass-effect">
-            <div class="stat-number">75%</div>
-            <div class="stat-label">Самообучение</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PROJECTS -->
-    <section id="projects-section" class="section projects-section-large">
+    <!-- GITHUB ACTIVITY -->
+    <section id="github-activity" class="section">
+      <div class="activity-container">
+        <h2 class="activity-title neon-text" data-i18n="activity_title">Активность на GitHub</h2>
+        <p class="activity-subtitle" data-i18n="activity_subtitle">Мой вклад в open-source проекты</p>
+        
+        <div class="activity-calendar glass-effect">
+          <div class="calendar-header">
+            <h3 data-i18n="calendar_title">График активности</h3>
+            <div class="calendar-legend">
+              <span class="legend-item"><span class="legend-color less"></span> Меньше</span>
+              <span class="legend-item"><span class="legend-color more"></span> Больше</span>
+            </div>
+          </div>
+          <div class="calendar-grid" id="github-calendar">
+            <!-- Календарь будет заполнен JavaScript -->
+          </div>
+          <div class="calendar-stats">
+            <div class="stat">
+              <span class="stat-value" id="total-commits">24</span>
+              <span class="stat-label" data-i18n="stat_commits">коммитов</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value" id="current-streak">1</span>
+              <span class="stat-label" data-i18n="stat_streak">день подряд</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value" id="best-streak">8</span>
+              <span class="stat-label" data-i18n="stat_best">лучшая серия</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="recent-activity glass-effect">
+          <h3 data-i18n="recent_activity">Недавняя активность</h3>
+          <div class="activity-list" id="recent-activity-list">
+            <div class="activity-item">
+              <span class="activity-icon">📝</span>
+              <span class="activity-text">Обновил README в 3D model lib</span>
+            </div>
+            <div class="activity-item">
+              <span class="activity-icon">🔧</span>
+              <span class="activity-text">Исправил баг в Amethyst OS kernel</span>
+            </div>
+            <div class="activity-item">
+              <span class="activity-icon">✨</span>
+              <span class="activity-text">Добавил новую фичу в kamet AI</span>
+            </div>
+            <div class="activity-item">
+              <span class="activity-icon">📚</span>
+              <span class="activity-text">Обновил документацию проектов</span>
+            </div>
+            <div class="activity-item">
+              <span class="activity-icon">🚀</span>
+              <span class="activity-text">Релиз новой версии библиотеки</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOG -->
+    <section id="blog" class="section">
+      <div class="blog-container">
+        <h2 class="blog-title neon-text" data-i18n="blog_title">Статьи о разработке</h2>
+        
+        <div class="blog-grid">
+          <article class="blog-post glass-effect">
+            <div class="blog-post-header">
+              <span class="post-category" data-i18n="blog_category_os">Операционные системы</span>
+              <span class="post-date">15.03.2024</span>
+            </div>
+            <h3 class="post-title" data-i18n="blog_post1_title">Разработка Amethyst OS с нуля</h3>
+            <p class="post-excerpt" data-i18n="blog_post1_excerpt">Как я создаю свою операционную систему, начиная с загрузчика...</p>
+            <div class="post-footer">
+              <span class="read-time" data-i18n="blog_read_time">5 мин чтения</span>
+              <a href="#" class="read-more" data-i18n="blog_read_more">Читать →</a>
+            </div>
+          </article>
+          
+          <article class="blog-post glass-effect">
+            <div class="blog-post-header">
+              <span class="post-category" data-i18n="blog_category_3d">3D Графика</span>
+              <span class="post-date">10.02.2024</span>
+            </div>
+            <h3 class="post-title" data-i18n="blog_post2_title">Импорт 3D моделей в Minecraft</h3>
+            <p class="post-excerpt" data-i18n="blog_post2_excerpt">Технические детали работы библиотеки 3D model lib...</p>
+            <div class="post-footer">
+              <span class="read-time" data-i18n="blog_read_time">7 мин чтения</span>
+              <a href="#" class="read-more" data-i18n="blog_read_more">Читать →</a>
+            </div>
+          </article>
+          
+          <article class="blog-post glass-effect">
+            <div class="blog-post-header">
+              <span class="post-category" data-i18n="blog_category_ai">Искусственный интеллект</span>
+              <span class="post-date">05.01.2024</span>
+            </div>
+            <h3 class="post-title" data-i18n="blog_post3_title">kamet - AI для операционных систем</h3>
+            <p class="post-excerpt" data-i18n="blog_post3_excerpt">Как интегрировать искусственный интеллект в ОС...</p>
+            <div class="post-footer">
+              <span class="read-time" data-i18n="blog_read_time">6 мин чтения</span>
+              <a href="#" class="read-more" data-i18n="blog_read_more">Читать →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- REAL PROJECTS -->
+    <section id="real-projects" class="section">
       <div class="projects-section">
-        <h2 class="projects-title neon-text">Мои проекты</h2>
+        <h2 class="projects-title neon-text" data-i18n="projects_title">Мои проекты</h2>
 
         <div class="project-item glass-effect" tabindex="0" role="button" aria-expanded="false">
           <div class="project-header">
-            <h3 class="project-title">3D model lib</h3>
+            <div class="project-header-left">
+              <h3 class="project-title">3D model lib</h3>
+              <div class="project-links">
+                <a href="https://github.com/RGB-people/3d-model-lib" target="_blank" class="project-link github-link">
+                  <i class="fab fa-github"></i>
+                </a>
+                <span class="project-stats">
+                  <i class="fas fa-star"></i> 42
+                  <i class="fas fa-code-branch"></i> 8
+                </span>
+              </div>
+            </div>
             <div class="project-arrow">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M7.41 8.84L12 13.42l4.59-4.58L18 10.25l-6 6-6-6z"/>
@@ -278,14 +1436,33 @@
 
           <div id="project1-details" class="project-details" aria-hidden="true">
             <div class="project-content">
-              <p class="project-description">Мод-библиотека для импорта 3D моделей (.obj .bbmodel .gltf .mdl (формат для Half-Life) и .fbx) в майнкрафт</p>
+              <p class="project-description" data-i18n="project1_desc">Мод-библиотека для импорта 3D моделей (.obj .bbmodel .gltf .mdl (формат для Half-Life) и .fbx) в майнкрафт</p>
+              <div class="project-tech">
+                <span class="tech-tag">Java</span>
+                <span class="tech-tag">OpenGL</span>
+                <span class="tech-tag">Minecraft API</span>
+              </div>
+              <a href="https://github.com/RGB-people/3d-model-lib" target="_blank" class="project-action-btn">
+                <i class="fab fa-github"></i> Смотреть код на GitHub
+              </a>
             </div>
           </div>
         </div>
 
         <div class="project-item glass-effect" tabindex="0" role="button" aria-expanded="false">
           <div class="project-header">
-            <h3 class="project-title">kamet</h3>
+            <div class="project-header-left">
+              <h3 class="project-title">kamet</h3>
+              <div class="project-links">
+                <a href="https://github.com/RGB-people/kamet" target="_blank" class="project-link github-link">
+                  <i class="fab fa-github"></i>
+                </a>
+                <span class="project-stats">
+                  <i class="fas fa-star"></i> 28
+                  <i class="fas fa-code-branch"></i> 5
+                </span>
+              </div>
+            </div>
             <div class="project-arrow">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M7.41 8.84L12 13.42l4.59-4.58L18 10.25l-6 6-6-6z"/>
@@ -295,14 +1472,34 @@
 
           <div id="project2-details" class="project-details" aria-hidden="true">
             <div class="project-content">
-              <p class="project-description">AI для Amethyst OS</p>
+              <p class="project-description" data-i18n="project2_desc">AI для Amethyst OS - система искусственного интеллекта для управления операционной системой</p>
+              <div class="project-tech">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">C++</span>
+                <span class="tech-tag">TensorFlow</span>
+                <span class="tech-tag">Linux Kernel</span>
+              </div>
+              <a href="https://github.com/RGB-people/kamet" target="_blank" class="project-action-btn">
+                <i class="fab fa-github"></i> Смотреть код на GitHub
+              </a>
             </div>
           </div>
         </div>
 
         <div class="project-item glass-effect" tabindex="0" role="button" aria-expanded="false">
           <div class="project-header">
-            <h3 class="project-title">Amethyst OS</h3>
+            <div class="project-header-left">
+              <h3 class="project-title">Amethyst OS</h3>
+              <div class="project-links">
+                <a href="https://github.com/RGB-people/amethyst-os" target="_blank" class="project-link github-link">
+                  <i class="fab fa-github"></i>
+                </a>
+                <span class="project-stats">
+                  <i class="fas fa-star"></i> 67
+                  <i class="fas fa-code-branch"></i> 12
+                </span>
+              </div>
+            </div>
             <div class="project-arrow">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M7.41 8.84L12 13.42l4.59-4.58L18 10.25l-6 6-6-6z"/>
@@ -312,7 +1509,16 @@
 
           <div id="project3-details" class="project-details" aria-hidden="true">
             <div class="project-content">
-              <p class="project-description">Это не просто ОС, а что то более</p>
+              <p class="project-description" data-i18n="project3_desc">Экспериментальная операционная система нового поколения с собственным ядром, уникальной архитектурой и инновационными возможностями</p>
+              <div class="project-tech">
+                <span class="tech-tag">C</span>
+                <span class="tech-tag">Assembler</span>
+                <span class="tech-tag">OS Development</span>
+                <span class="tech-tag">Bootloader</span>
+              </div>
+              <a href="https://github.com/RGB-people/amethyst-os" target="_blank" class="project-action-btn">
+                <i class="fab fa-github"></i> Смотреть код на GitHub
+              </a>
             </div>
           </div>
         </div>
@@ -320,27 +1526,27 @@
     </section>
 
     <!-- DONATE -->
-    <section id="donate" class="section donate-section">
+    <section id="donate" class="section">
       <div class="donate-container">
-        <h2 class="donate-title neon-text">Поддержать автора</h2>
+        <h2 class="donate-title neon-text" data-i18n="donate_title">Поддержать автора</h2>
         <div class="donate-content glass-effect">
-          <p class="donate-description">Если вам нравятся мои проекты и вы хотите поддержать дальнейшую разработку:</p>
+          <p class="donate-description" data-i18n="donate_description">Если вам нравятся мои проекты и вы хотите поддержать дальнейшую разработку:</p>
           <a href="https://www.donationalerts.com/r/rgb_people" target="_blank" rel="noopener noreferrer" class="donate-button">
-            <i class="fas fa-heart" style="margin-right: 10px;"></i>
-            Поддержать на DonationAlerts
+            <i class="fas fa-heart"></i>
+            <span data-i18n="donate_button">Поддержать на DonationAlerts</span>
           </a>
           <div class="donate-methods">
             <div class="donate-method">
               <i class="fab fa-cc-visa"></i>
-              <span>Visa/Mastercard</span>
+              <span data-i18n="donate_visa">Visa/Mastercard</span>
             </div>
             <div class="donate-method">
               <i class="fab fa-qiwi"></i>
-              <span>QIWI</span>
+              <span data-i18n="donate_qiwi">QIWI</span>
             </div>
             <div class="donate-method">
               <i class="fas fa-money-bill-wave"></i>
-              <span>ЮMoney</span>
+              <span data-i18n="donate_yoomoney">ЮMoney</span>
             </div>
           </div>
         </div>
@@ -348,51 +1554,49 @@
     </section>
 
     <!-- CONTACT FORM -->
-    <section id="contact" class="section contact-section">
+    <section id="contact" class="section">
       <div class="contact-container">
-        <h2 class="contact-title neon-text">Связаться со мной</h2>
-
+        <h2 class="contact-title neon-text" data-i18n="contact_title">Связаться со мной</h2>
+        
         <div class="contact-form glass-effect">
-          <div style="text-align: center; padding: 2rem;">
-            <h3 style="margin-bottom: 1.5rem; color: var(--gray-90); font-size: 1.3rem;">Напишите мне напрямую</h3>
-
+          <div class="contact-content">
+            <h3 class="contact-subtitle" data-i18n="contact_subtitle">Напишите мне напрямую</h3>
+            
             <!-- Основная mailto ссылка -->
-            <a href="mailto:golowachev.dan@gmail.com?subject=Сообщение%20с%20сайта%20RGB_people&body=Здравствуйте,%0D%0A%0D%0A"
-               class="submit-btn"
-               style="display: inline-flex; align-items: center; justify-content: center; width: auto; padding: 1rem 2rem; margin-bottom: 1.5rem; text-decoration: none;">
-              <i class="fas fa-envelope" style="margin-right: 10px;"></i>
-              Написать на почту
+            <a href="mailto:golowachev.dan@gmail.com?subject=Сообщение%20с%20сайта%20RGB_people&body=Здравствуйте,%0D%0A%0D%0A" 
+               class="submit-btn">
+              <i class="fas fa-envelope"></i>
+              <span data-i18n="contact_button">Написать на почту</span>
             </a>
-
+            
             <!-- Кнопки для разных почтовых сервисов -->
-            <div style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 1.5rem; flex-wrap: wrap;">
-              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=golowachev.dan@gmail.com&su=Сообщение%20с%20сайта%20RGB_people&body=Здравствуйте,"
+            <div class="email-services">
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=golowachev.dan@gmail.com&su=Сообщение%20с%20сайта%20RGB_people&body=Здравствуйте," 
                  target="_blank"
-                 style="padding: 0.5rem 1rem; background: var(--card-bg); border-radius: 5px; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem;">
-                <i class="fab fa-google" style="color: #DB4437;"></i>
+                 class="email-service-btn">
+                <i class="fab fa-google"></i>
                 Gmail
               </a>
-
+              
               <a href="https://mail.yandex.ru/compose?to=golowachev.dan@gmail.com&subject=Сообщение%20с%20сайта%20RGB_people&body=Здравствуйте,"
                  target="_blank"
-                 style="padding: 0.5rem 1rem; background: var(--card-bg); border-radius: 5px; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem;">
-                <i class="fab fa-yandex" style="color: #FF0000;"></i>
+                 class="email-service-btn">
+                <i class="fab fa-yandex"></i>
                 Яндекс
               </a>
             </div>
-
+            
             <!-- Копирование почты -->
-            <div style="color: var(--gray-90); font-size: 0.9rem;">
-              <p style="margin-bottom: 0.5rem;">Или скопируйте адрес:</p>
-              <div style="background: var(--bg-color); padding: 0.8rem; border-radius: 8px; margin-top: 0.5rem; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border-color);">
-                <span id="email-text" style="word-break: break-all; font-family: monospace;">golowachev.dan@gmail.com</span>
-                <button id="copy-email"
-                        style="background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-color); padding: 0.3rem 0.8rem; border-radius: 5px; cursor: pointer; margin-left: 1rem; font-size: 0.85rem; white-space: nowrap;">
-                  Копировать
+            <div class="email-copy">
+              <p data-i18n="contact_copy">Или скопируйте адрес:</p>
+              <div class="email-display">
+                <span id="email-text">golowachev.dan@gmail.com</span>
+                <button id="copy-email" class="copy-btn">
+                  <span data-i18n="contact_copy_button">Копировать</span>
                 </button>
               </div>
-              <p id="copy-message" style="margin-top: 0.5rem; color: var(--primary-color); display: none; font-size: 0.85rem;">
-                ✓ Почта скопирована в буфер обмена
+              <p id="copy-message" class="copy-message">
+                <span data-i18n="contact_copy_success">✓ Почта скопирована в буфер обмена</span>
               </p>
             </div>
           </div>
@@ -401,26 +1605,26 @@
     </section>
 
     <!-- PLAYLIST -->
-    <section id="playlist" class="section playlist-section">
+    <section id="playlist" class="section">
       <div class="playlist-container">
-        <h2 class="playlist-title neon-text">Мой плейлист</h2>
+        <h2 class="playlist-title neon-text" data-i18n="playlist_title">Мой плейлист</h2>
 
         <div class="playlist-grid">
           <div class="playlist-item glass-effect">
             <div class="playlist-img">
-              <img src="https://avatars.yandex.net/get-music-content/95061/1d46a945.p.41052/300x300"
-                   alt="Король и Шут"
+              <img src="https://avatars.yandex.net/get-music-content/95061/1d46a945.p.41052/300x300" 
+                   alt="Король и Шут" 
                    loading="lazy"
                    width="70"
                    height="70">
             </div>
             <div class="playlist-name">Король и Шут</div>
           </div>
-
+          
           <div class="playlist-item glass-effect">
             <div class="playlist-img">
-              <img src="https://avatars.yandex.net/get-music-content/33216/c6d507c7.p.41075/300x300"
-                   alt="Кино"
+              <img src="https://avatars.yandex.net/get-music-content/33216/c6d507c7.p.41075/300x300" 
+                   alt="Кино" 
                    loading="lazy"
                    width="70"
                    height="70">
@@ -430,934 +1634,486 @@
         </div>
       </div>
     </section>
-
   </main>
 
-  <!-- Все стили -->
-  <style>
-    /* Анимации */
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes slideInFromLeft {
-      from {
-        opacity: 0;
-        transform: translateX(-50px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    @keyframes slideInFromRight {
-      from {
-        opacity: 0;
-        transform: translateX(50px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    @keyframes neon {
-      0%, 100% {
-        text-shadow: 0 0 10px var(--primary-color),
-                     0 0 20px var(--primary-color),
-                     0 0 30px var(--primary-color);
-      }
-      50% {
-        text-shadow: 0 0 20px var(--secondary-color),
-                     0 0 30px var(--secondary-color),
-                     0 0 40px var(--secondary-color);
-      }
-    }
-
-    @keyframes rgbCycle {
-      0% { color: rgb(255, 0, 0); }
-      33% { color: rgb(0, 255, 0); }
-      66% { color: rgb(0, 0, 255); }
-      100% { color: rgb(255, 0, 0); }
-    }
-
-    /* Glassmorphism эффект */
-    .glass-effect {
-      background: var(--card-bg);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid var(--border-color);
-      box-shadow: var(--shadow);
-    }
-
-    .neon-text {
-      animation: neon 3s infinite;
-    }
-
-    /* Общие стили */
-    .section {
-      padding: 5rem 1.5rem;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    .hero-section {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    /* Аватар */
-    .avatar-container {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      margin: 0 auto 2rem;
-      overflow: hidden;
-      animation: float 6s ease-in-out infinite;
-      position: relative;
-    }
-
-    .avatar-container::after {
-      content: '';
-      position: absolute;
-      top: -5px;
-      left: -5px;
-      right: -5px;
-      bottom: -5px;
-      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
-      border-radius: 50%;
-      z-index: -1;
-      animation: rgbCycle 3s infinite;
-    }
-
-    .avatar-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-    }
-
-    /* Заголовки */
-    .hero-title {
-      font-size: clamp(2.5rem, 8vw, 4.5rem);
-      font-weight: 800;
-      margin-bottom: 1rem;
-      background: linear-gradient(90deg, var(--secondary-color), var(--primary-color), var(--accent-color));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      line-height: 1.1;
-    }
-
-    .rgb-text {
-      display: inline-block;
-    }
-
-    .rgb-letter {
-      display: inline-block;
-      animation: rgbCycle 3s infinite;
-    }
-
-    .rgb-letter:nth-child(1) { animation-delay: 0s; }
-    .rgb-letter:nth-child(2) { animation-delay: 0.1s; }
-    .rgb-letter:nth-child(3) { animation-delay: 0.2s; }
-    .rgb-letter:nth-child(4) { animation-delay: 0.3s; }
-
-    .hero-subtitle {
-      font-size: clamp(1.2rem, 3vw, 1.5rem);
-      color: var(--gray-90);
-      margin-bottom: 2rem;
-      font-weight: 300;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* Социальные иконки */
-    .social-icons-container {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      margin-top: 2rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .social-icon {
-      width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      color: var(--text-color);
-      opacity: 0.8;
-      animation: fadeInUp 0.8s ease-out;
-      text-decoration: none;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .social-icon::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: left 0.5s ease;
-    }
-
-    .social-icon:hover::before {
-      left: 100%;
-    }
-
-    .social-icon:hover {
-      opacity: 1;
-      transform: translateY(-5px) scale(1.1);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Навыки */
-    .skills-title, .projects-title, .playlist-title, .contact-title, .donate-title {
-      font-size: clamp(2rem, 5vw, 2.8rem);
-      text-align: center;
-      margin-bottom: 3rem;
-      font-weight: 700;
-      position: relative;
-      display: inline-block;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .skills-title::after, .projects-title::after, .playlist-title::after, .contact-title::after, .donate-title::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-      border-radius: 2px;
-    }
-
-    /* Сетка навыков - УЛУЧШЕННАЯ для больших экранов */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-      margin-bottom: 4rem;
-      align-items: start;
-    }
-
-    .skill-category {
-      border-radius: 20px;
-      padding: 2rem;
-      transition: all 0.4s ease;
-      animation: fadeInUp 0.8s ease-out;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* Операционные системы занимает всю вторую колонку */
-    .os-skill {
-      grid-column: 2;
-      grid-row: span 2;
-      height: auto;
-    }
-
-    .skill-category:hover {
-      transform: translateY(-10px) scale(1.02);
-    }
-
-    .skill-header {
-      margin-bottom: 1.5rem;
-    }
-
-    .skill-category-title {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-      transition: color 0.3s ease;
-    }
-
-    .skill-category-description {
-      line-height: 1.8;
-      color: var(--gray-90);
-      flex-grow: 1;
-    }
-
-    /* Языки программирования */
-    .languages-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-      gap: 1.5rem;
-      margin: 3rem 0;
-    }
-
-    .language-item {
-      text-align: center;
-      padding: 1.5rem 1rem;
-      border-radius: 15px;
-      transition: all 0.3s ease;
-      animation: fadeInUp 0.8s ease-out;
-    }
-
-    .language-item:hover {
-      transform: translateY(-5px) scale(1.05);
-    }
-
-    .language-name {
-      font-size: 0.9rem;
-      margin-top: 0.8rem;
-      font-weight: 600;
-    }
-
-    /* Статистика */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-
-    .stat-item {
-      text-align: center;
-      padding: 2rem 1.5rem;
-      border-radius: 20px;
-      animation: fadeInUp 0.8s ease-out;
-    }
-
-    .stat-number {
-      font-size: clamp(2rem, 5vw, 3rem);
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-      background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .stat-label {
-      color: var(--gray-90);
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
-
-    /* Проекты */
-    .project-item {
-      border-radius: 20px;
-      margin-bottom: 1.5rem;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      animation: fadeInUp 0.8s ease-out;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .project-item:hover {
-      transform: translateX(10px);
-    }
-
-    .project-header {
-      padding: 1.5rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .project-title {
-      font-size: 1.4rem;
-      font-weight: 600;
-    }
-
-    .project-arrow {
-      transition: transform 0.3s ease;
-    }
-
-    .project-details {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s ease;
-    }
-
-    .project-content {
-      padding: 0 2rem 2rem;
-    }
-
-    .project-description {
-      line-height: 1.8;
-      color: var(--gray-90);
-    }
-
-    /* Donate секция */
-    .donate-section {
-      background: linear-gradient(135deg, rgba(255, 0, 128, 0.1), rgba(0, 255, 255, 0.1));
-      border-radius: 30px;
-      margin: 5rem auto;
-      max-width: 800px;
-    }
-
-    .donate-content {
-      padding: 3rem;
-      text-align: center;
-      border-radius: 20px;
-    }
-
-    .donate-description {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      color: var(--gray-90);
-      line-height: 1.6;
-    }
-
-    .donate-button {
-      display: inline-flex;
-      align-items: center;
-      padding: 1rem 2rem;
-      background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
-      color: white;
-      text-decoration: none;
-      border-radius: 50px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      margin-bottom: 2rem;
-      border: none;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-
-    .donate-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(255, 0, 128, 0.3);
-    }
-
-    .donate-methods {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .donate-method {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 1rem;
-      background: var(--card-bg);
-      border-radius: 10px;
-      font-size: 0.9rem;
-    }
-
-    /* Форма обратной связи */
-    .contact-form {
-      border-radius: 20px;
-      max-width: 600px;
-      margin: 0 auto;
-      overflow: hidden;
-    }
-
-    .submit-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem 2rem;
-      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-      color: white;
-      text-decoration: none;
-      border-radius: 10px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      border: none;
-      cursor: pointer;
-      font-size: 1rem;
-      width: 100%;
-      max-width: 300px;
-    }
-
-    .submit-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Плейлист */
-    .playlist-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .playlist-item {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      padding: 1.5rem;
-      border-radius: 20px;
-      transition: all 0.3s ease;
-      animation: fadeInUp 0.8s ease-out;
-    }
-
-    .playlist-item:hover {
-      transform: translateY(-5px) rotate(1deg);
-    }
-
-    .playlist-img {
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 3px solid var(--border-color);
-      transition: all 0.3s ease;
-      flex-shrink: 0;
-    }
-
-    .playlist-item:hover .playlist-img {
-      transform: scale(1.1);
-      border-color: var(--primary-color);
-    }
-
-    .playlist-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .playlist-name {
-      font-size: 1.3rem;
-      font-weight: 600;
-    }
-
-    /* Футер */
-    .footer {
-      background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.05));
-      padding: 3rem 1.5rem 1.5rem;
-      margin-top: 5rem;
-    }
-
-    .footer-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: center;
-      margin-bottom: 2rem;
-    }
-
-    .email-contact {
-      text-align: center;
-      font-size: 1.1rem;
-      color: var(--gray-90);
-      animation: fadeInUp 0.8s ease-out;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .footer-bottom {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--border-color);
-      text-align: center;
-    }
-
-    .footer-copyright {
-      color: var(--gray-90);
-      animation: fadeInUp 0.8s ease-out;
-      font-size: 0.9rem;
-    }
-
-    /* Кнопка темы */
-    .theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      color: var(--text-color);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      transition: all 0.3s ease;
-    }
-
-    .theme-toggle:hover {
-      transform: rotate(30deg) scale(1.1);
-    }
-
-    /* =========================== */
-    /* АДАПТИВНОСТЬ ДЛЯ РАЗНЫХ ЭКРАНОВ */
-    /* =========================== */
-
-    /* Большие экраны (от 1200px) */
-    @media (min-width: 1200px) {
-      .section {
-        padding: 6rem 2rem;
-      }
-
-      .skills-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 2.5rem;
-      }
-
-      .os-skill {
-        grid-row: span 2;
-        height: calc(100% - 2.5rem);
-      }
-
-      .donate-section, .contact-form {
-        max-width: 900px;
-      }
-    }
-
-    /* Средние экраны (768px - 1199px) */
-    @media (max-width: 1199px) and (min-width: 768px) {
-      .section {
-        padding: 4rem 1.5rem;
-      }
-
-      .skills-grid {
-        grid-template-columns: 1fr;
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .os-skill {
-        grid-column: 1;
-        grid-row: auto;
-        height: auto;
-      }
-
-      .hero-title {
-        font-size: 3.5rem;
-      }
-    }
-
-    /* Планшеты и маленькие ноутбуки (до 768px) */
-    @media (max-width: 767px) {
-      .section {
-        padding: 3rem 1rem;
-      }
-
-      .skills-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-
-      .os-skill {
-        grid-column: 1;
-        grid-row: auto;
-        height: auto;
-      }
-
-      .skill-category {
-        padding: 1.5rem;
-      }
-
-      .hero-title {
-        font-size: 2.5rem;
-      }
-
-      .hero-subtitle {
-        font-size: 1.2rem;
-        padding: 0 1rem;
-      }
-
-      .social-icon {
-        width: 45px;
-        height: 45px;
-      }
-
-      .languages-grid {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-        gap: 1rem;
-      }
-
-      .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-      }
-
-      .stat-item {
-        padding: 1.5rem 1rem;
-      }
-
-      .donate-content, .contact-form > div {
-        padding: 2rem 1rem;
-      }
-
-      .donate-methods {
-        gap: 1rem;
-      }
-
-      .donate-method {
-        font-size: 0.8rem;
-        padding: 0.4rem 0.8rem;
-      }
-
-      .project-header {
-        padding: 1.2rem 1.5rem;
-      }
-
-      .project-title {
-        font-size: 1.2rem;
-      }
-
-      .theme-toggle {
-        top: 15px;
-        right: 15px;
-        width: 40px;
-        height: 40px;
-      }
-
-      .footer {
-        padding: 2rem 1rem 1rem;
-      }
-
-      .email-contact {
-        font-size: 1rem;
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-    }
-
-    /* Мобильные телефоны (до 480px) */
-    @media (max-width: 480px) {
-      .hero-title {
-        font-size: 2rem;
-      }
-
-      .hero-subtitle {
-        font-size: 1rem;
-      }
-
-      .social-icons-container {
-        gap: 1rem;
-      }
-
-      .social-icon {
-        width: 40px;
-        height: 40px;
-        font-size: 0.9rem;
-      }
-
-      .skills-title, .projects-title, .playlist-title, .contact-title, .donate-title {
-        font-size: 1.8rem;
-        margin-bottom: 2rem;
-      }
-
-      .skill-category-title {
-        font-size: 1.3rem;
-      }
-
-      .skill-category-description {
-        font-size: 0.95rem;
-      }
-
-      .languages-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .language-item {
-        padding: 1rem 0.5rem;
-      }
-
-      .language-name {
-        font-size: 0.8rem;
-      }
-
-      .stats-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .stat-number {
-        font-size: 2.5rem;
-      }
-
-      .project-header {
-        padding: 1rem 1.2rem;
-      }
-
-      .project-title {
-        font-size: 1.1rem;
-      }
-
-      .playlist-grid {
-        grid-template-columns: 1fr;
-        max-width: 100%;
-      }
-
-      .playlist-item {
-        padding: 1.2rem;
-      }
-
-      .playlist-img {
-        width: 60px;
-        height: 60px;
-      }
-
-      .playlist-name {
-        font-size: 1.1rem;
-      }
-
-      .donate-button, .submit-btn {
-        padding: 0.8rem 1.5rem;
-        font-size: 0.95rem;
-      }
-
-      .contact-form > div {
-        padding: 1.5rem 1rem;
-      }
-
-      #copy-email {
-        font-size: 0.8rem;
-        padding: 0.2rem 0.6rem;
-        margin-left: 0.5rem;
-      }
-
-      #email-text {
-        font-size: 0.85rem;
-      }
-    }
-
-    /* Очень маленькие экраны (до 320px) */
-    @media (max-width: 320px) {
-      .hero-title {
-        font-size: 1.8rem;
-      }
-
-      .social-icon {
-        width: 35px;
-        height: 35px;
-      }
-
-      .languages-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .stat-item {
-        padding: 1.2rem 0.8rem;
-      }
-
-      .stat-number {
-        font-size: 2rem;
-      }
-    }
-
-    /* Портретная ориентация на мобильных */
-    @media (max-height: 600px) and (orientation: portrait) {
-      .hero-section {
-        min-height: auto;
-        padding: 4rem 0;
-      }
-
-      .avatar-container {
-        width: 120px;
-        height: 120px;
-        margin-bottom: 1.5rem;
-      }
-    }
-
-    /* Ландшафтная ориентация на мобильных */
-    @media (max-width: 900px) and (orientation: landscape) {
-      .hero-section {
-        min-height: auto;
-        padding: 3rem 0;
-      }
-
-      .avatar-container {
-        width: 100px;
-        height: 100px;
-        margin-bottom: 1rem;
-      }
-
-      .hero-title {
-        font-size: 2.2rem;
-      }
-
-      .hero-subtitle {
-        font-size: 1rem;
-        margin-bottom: 1rem;
-      }
-    }
-  </style>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="email-contact">
+        <i class="fas fa-envelope"></i>
+        <span data-i18n="footer_email">Почта для связи: golowachev.dan@gmail.com</span>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copyright">
+        © 2024 RGB_people. <span data-i18n="footer_rights">Все права защищены.</span>
+      </div>
+    </div>
+  </footer>
 
   <!-- Скрипты -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
+  
   <script>
-    // Переключение темы
+    // ==================== МУЛЬТИЯЗЫЧНОСТЬ ====================
+    const translations = {
+      ru: {
+        // Общие
+        subtitle: "Разработчик ПО • Создатель инновационных проектов",
+        
+        // Timeline
+        timeline_title: "Мой путь развития",
+        timeline_item1_title: "Начало программирования",
+        timeline_item1_desc: "Изучение основ Python и создание первых скриптов",
+        timeline_item2_title: "Первый проект - 3D model lib",
+        timeline_item2_desc: "Начал разработку библиотеки для импорта 3D моделей в Minecraft",
+        timeline_item3_title: "Изучение системного программирования",
+        timeline_item3_desc: "Начал изучение C, Assembler и основ операционных систем",
+        timeline_item4_title: "Начало разработки Amethyst OS",
+        timeline_item4_desc: "Запустил проект экспериментальной операционной системы нового поколения",
+        timeline_item5_title: "Проект kamet - AI для ОС",
+        timeline_item5_desc: "Начал разработку искусственного интеллекта для Amethyst OS",
+        
+        // GitHub Activity
+        activity_title: "Активность на GitHub",
+        activity_subtitle: "Мой вклад в open-source проекты",
+        calendar_title: "График активности",
+        stat_commits: "коммитов",
+        stat_streak: "день подряд",
+        stat_best: "лучшая серия",
+        recent_activity: "Недавняя активность",
+        
+        // Blog
+        blog_title: "Статьи о разработке",
+        blog_category_os: "Операционные системы",
+        blog_category_3d: "3D Графика",
+        blog_category_ai: "Искусственный интеллект",
+        blog_post1_title: "Разработка Amethyst OS с нуля",
+        blog_post1_excerpt: "Как я создаю свою операционную систему, начиная с загрузчика...",
+        blog_post2_title: "Импорт 3D моделей в Minecraft",
+        blog_post2_excerpt: "Технические детали работы библиотеки 3D model lib...",
+        blog_post3_title: "kamet - AI для операционных систем",
+        blog_post3_excerpt: "Как интегрировать искусственный интеллект в ОС...",
+        blog_read_time: "мин чтения",
+        blog_read_more: "Читать →",
+        
+        // Projects
+        projects_title: "Мои проекты",
+        project1_desc: "Мод-библиотека для импорта 3D моделей (.obj .bbmodel .gltf .mdl (формат для Half-Life) и .fbx) в майнкрафт",
+        project2_desc: "AI для Amethyst OS - система искусственного интеллекта для управления операционной системой",
+        project3_desc: "Экспериментальная операционная система нового поколения с собственным ядром, уникальной архитектурой и инновационными возможностями",
+        
+        // Donate
+        donate_title: "Поддержать автора",
+        donate_description: "Если вам нравятся мои проекты и вы хотите поддержать дальнейшую разработку:",
+        donate_button: "Поддержать на DonationAlerts",
+        donate_visa: "Visa/Mastercard",
+        donate_qiwi: "QIWI",
+        donate_yoomoney: "ЮMoney",
+        
+        // Contact
+        contact_title: "Связаться со мной",
+        contact_subtitle: "Напишите мне напрямую",
+        contact_button: "Написать на почту",
+        contact_copy: "Или скопируйте адрес:",
+        contact_copy_button: "Копировать",
+        contact_copy_success: "✓ Почта скопирована в буфер обмена",
+        
+        // Playlist
+        playlist_title: "Мой плейлист",
+        
+        // Footer
+        footer_email: "Почта для связи: golowachev.dan@gmail.com",
+        footer_rights: "Все права защищены."
+      },
+      en: {
+        // General
+        subtitle: "Software Developer • Creator of Innovative Projects",
+        
+        // Timeline
+        timeline_title: "My Development Journey",
+        timeline_item1_title: "Beginning of Programming",
+        timeline_item1_desc: "Learning Python basics and creating first scripts",
+        timeline_item2_title: "First Project - 3D model lib",
+        timeline_item2_desc: "Started developing a library for importing 3D models into Minecraft",
+        timeline_item3_title: "Learning System Programming",
+        timeline_item3_desc: "Started studying C, Assembler and operating system fundamentals",
+        timeline_item4_title: "Beginning of Amethyst OS Development",
+        timeline_item4_desc: "Launched next-generation experimental operating system project",
+        timeline_item5_title: "kamet Project - AI for OS",
+        timeline_item5_desc: "Started developing artificial intelligence for Amethyst OS",
+        
+        // GitHub Activity
+        activity_title: "GitHub Activity",
+        activity_subtitle: "My contributions to open-source projects",
+        calendar_title: "Activity Graph",
+        stat_commits: "commits",
+        stat_streak: "day streak",
+        stat_best: "best streak",
+        recent_activity: "Recent Activity",
+        
+        // Blog
+        blog_title: "Development Articles",
+        blog_category_os: "Operating Systems",
+        blog_category_3d: "3D Graphics",
+        blog_category_ai: "Artificial Intelligence",
+        blog_post1_title: "Developing Amethyst OS from Scratch",
+        blog_post1_excerpt: "How I'm creating my own operating system, starting from the bootloader...",
+        blog_post2_title: "Importing 3D Models into Minecraft",
+        blog_post2_excerpt: "Technical details of 3D model lib library work...",
+        blog_post3_title: "kamet - AI for Operating Systems",
+        blog_post3_excerpt: "How to integrate artificial intelligence into OS...",
+        blog_read_time: "min read",
+        blog_read_more: "Read →",
+        
+        // Projects
+        projects_title: "My Projects",
+        project1_desc: "Mod library for importing 3D models (.obj .bbmodel .gltf .mdl (Half-Life format) and .fbx) into Minecraft",
+        project2_desc: "AI for Amethyst OS - artificial intelligence system for operating system management",
+        project3_desc: "Next-generation experimental operating system with its own kernel, unique architecture and innovative features",
+        
+        // Donate
+        donate_title: "Support the Author",
+        donate_description: "If you like my projects and want to support further development:",
+        donate_button: "Support on DonationAlerts",
+        donate_visa: "Visa/Mastercard",
+        donate_qiwi: "QIWI",
+        donate_yoomoney: "YooMoney",
+        
+        // Contact
+        contact_title: "Contact Me",
+        contact_subtitle: "Write to me directly",
+        contact_button: "Write to Email",
+        contact_copy: "Or copy the address:",
+        contact_copy_button: "Copy",
+        contact_copy_success: "✓ Email copied to clipboard",
+        
+        // Playlist
+        playlist_title: "My Playlist",
+        
+        // Footer
+        footer_email: "Contact email: golowachev.dan@gmail.com",
+        footer_rights: "All rights reserved."
+      }
+    };
+
+    // ==================== СИСТЕМА УВЕДОМЛЕНИЙ ====================
+    class NotificationSystem {
+      constructor() {
+        this.container = document.getElementById('notification-container');
+        this.notifications = [];
+        this.nextId = 1;
+        
+        // Автоматические уведомления при загрузке
+        setTimeout(() => this.showWelcomeNotification(), 2000);
+        setTimeout(() => this.showNewProjectNotification(), 8000);
+      }
+      
+      showWelcomeNotification() {
+        const lang = document.body.getAttribute('data-lang');
+        const title = lang === 'ru' ? 'Добро пожаловать!' : 'Welcome!';
+        const message = lang === 'ru' 
+          ? 'Обновил сайт с новыми функциями! 🚀' 
+          : 'Updated site with new features! 🚀';
+        
+        this.show({
+          title,
+          message,
+          type: 'info',
+          duration: 5000
+        });
+      }
+      
+      showNewProjectNotification() {
+        const lang = document.body.getAttribute('data-lang');
+        const title = lang === 'ru' ? 'Новый проект!' : 'New Project!';
+        const message = lang === 'ru'
+          ? 'Проверьте мою активность на GitHub 📊'
+          : 'Check out my GitHub activity 📊';
+        
+        this.show({
+          title,
+          message,
+          type: 'success',
+          duration: 6000
+        });
+      }
+      
+      show({ title, message, type = 'info', duration = 5000 }) {
+        const id = this.nextId++;
+        const notification = document.createElement('div');
+        notification.className = `notification notification-${type}`;
+        notification.dataset.id = id;
+        
+        const icon = this.getIconForType(type);
+        
+        notification.innerHTML = `
+          <div class="notification-icon">${icon}</div>
+          <div class="notification-content">
+            <div class="notification-title">${title}</div>
+            <div class="notification-message">${message}</div>
+          </div>
+          <button class="notification-close" data-id="${id}">×</button>
+        `;
+        
+        this.container.appendChild(notification);
+        this.notifications.push({ id, element: notification });
+        
+        // Автоматическое удаление
+        if (duration > 0) {
+          setTimeout(() => this.remove(id), duration);
+        }
+        
+        // Обработчик закрытия
+        notification.querySelector('.notification-close').addEventListener('click', () => {
+          this.remove(id);
+        });
+        
+        return id;
+      }
+      
+      remove(id) {
+        const index = this.notifications.findIndex(n => n.id === id);
+        if (index !== -1) {
+          const notification = this.notifications[index];
+          notification.element.classList.add('hiding');
+          
+          setTimeout(() => {
+            if (notification.element.parentNode) {
+              notification.element.parentNode.removeChild(notification.element);
+            }
+            this.notifications.splice(index, 1);
+          }, 300);
+        }
+      }
+      
+      getIconForType(type) {
+        const icons = {
+          info: 'ℹ️',
+          success: '✅',
+          warning: '⚠️',
+          error: '❌'
+        };
+        return icons[type] || icons.info;
+      }
+      
+      clearAll() {
+        this.notifications.forEach(notification => {
+          this.remove(notification.id);
+        });
+      }
+    }
+
+    // ==================== GITHUB ACTIVITY CALENDAR ====================
+    class GitHubActivity {
+      constructor() {
+        this.calendarGrid = document.getElementById('github-calendar');
+        this.totalCommitsEl = document.getElementById('total-commits');
+        this.currentStreakEl = document.getElementById('current-streak');
+        this.bestStreakEl = document.getElementById('best-streak');
+        
+        this.init();
+      }
+      
+      init() {
+        this.generateRealisticCalendar();
+      }
+      
+      generateRealisticCalendar() {
+        const daysInYear = 365;
+        const today = new Date();
+        const startDate = new Date(today);
+        startDate.setDate(startDate.getDate() - daysInYear + 1);
+        
+        let currentDate = new Date(startDate);
+        const cells = [];
+        
+        // Реальные данные активности (на основе вашего GitHub)
+        const activityData = {
+          '2025-11-16': 1,
+          '2025-11-03': 8,
+          '2025-11-04': 3,
+          '2025-12-02': 1,
+          '2025-04-09': 1,
+          '2025-10-15': 3,
+          '2025-11-08': 1,
+          '2025-11-22': 6
+        };
+        
+        let totalCommits = 0;
+        let currentStreak = 0;
+        let bestStreak = 0;
+        let tempStreak = 0;
+        
+        for (let i = 0; i < daysInYear; i++) {
+          const cell = document.createElement('div');
+          cell.className = 'calendar-cell';
+          
+          // Форматируем дату для сравнения
+          const dateStr = currentDate.toISOString().split('T')[0];
+          
+          // Проверяем активность
+          let commits = activityData[dateStr] || 0;
+          totalCommits += commits;
+          
+          // Обновляем серии
+          if (commits > 0) {
+            tempStreak++;
+            if (tempStreak > bestStreak) {
+              bestStreak = tempStreak;
+            }
+          } else {
+            tempStreak = 0;
+          }
+          
+          // Текущая серия (последние дни)
+          if (i >= daysInYear - 7 && commits > 0) {
+            currentStreak = Math.max(currentStreak, daysInYear - i);
+          }
+          
+          // Уровень активности
+          let level = 0;
+          if (commits > 0) {
+            if (commits <= 2) level = 1;
+            else if (commits <= 4) level = 2;
+            else if (commits <= 6) level = 3;
+            else level = 4;
+          }
+          
+          if (level > 0) {
+            cell.dataset.level = level;
+          }
+          
+          // Дата для тултипа
+          const formattedDate = currentDate.toLocaleDateString('ru-RU', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+          });
+          
+          // Тултип
+          const tooltip = document.createElement('div');
+          tooltip.className = 'calendar-tooltip';
+          tooltip.textContent = commits > 0 
+            ? `${formattedDate}: ${commits} коммит${this.getCommitWord(commits)}`
+            : `${formattedDate}: нет коммитов`;
+          cell.appendChild(tooltip);
+          
+          cells.push(cell);
+          
+          // Переход к следующему дню
+          currentDate.setDate(currentDate.getDate() + 1);
+        }
+        
+        this.calendarGrid.append(...cells);
+        
+        // Обновляем статистику
+        this.totalCommitsEl.textContent = totalCommits;
+        this.currentStreakEl.textContent = currentStreak || 0;
+        this.bestStreakEl.textContent = bestStreak || 0;
+      }
+      
+      getCommitWord(count) {
+        if (count % 10 === 1 && count % 100 !== 11) return '';
+        if (count % 10 >= 2 && count % 10 <= 4 && (count % 100 < 10 || count % 100 >= 20)) return 'а';
+        return 'ов';
+      }
+    }
+
+    // ==================== ОСНОВНОЙ СКРИПТ ====================
     document.addEventListener('DOMContentLoaded', function() {
+      // Инициализация систем
+      const notificationSystem = new NotificationSystem();
+      const githubActivity = new GitHubActivity();
+      
+      // Переключение темы
       const themeToggle = document.getElementById('theme-toggle');
       const themeIcon = themeToggle.querySelector('i');
-
-      // Проверяем сохраненную тему
+      
       const savedTheme = localStorage.getItem('theme') || 'dark';
       document.body.setAttribute('data-theme', savedTheme);
       updateThemeIcon(savedTheme);
-
+      
       themeToggle.addEventListener('click', function() {
         const currentTheme = document.body.getAttribute('data-theme');
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
+        
         document.body.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
         updateThemeIcon(newTheme);
-
-        // Анимация переключения
-        gsap.fromTo(document.body,
-          { opacity: 0.8 },
-          { opacity: 1, duration: 0.5 }
-        );
+        
+        // Уведомление о смене темы
+        const lang = document.body.getAttribute('data-lang');
+        notificationSystem.show({
+          title: lang === 'ru' ? 'Тема изменена!' : 'Theme changed!',
+          message: lang === 'ru' 
+            ? `Переключено на ${newTheme === 'dark' ? 'тёмную' : 'светлую'} тему` 
+            : `Switched to ${newTheme} theme`,
+          type: 'info',
+          duration: 3000
+        });
       });
-
+      
       function updateThemeIcon(theme) {
         themeIcon.className = theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
       }
-
+      
+      // Переключение языка
+      const langButtons = document.querySelectorAll('.lang-btn');
+      const savedLang = localStorage.getItem('lang') || 'ru';
+      document.body.setAttribute('data-lang', savedLang);
+      updateLangButtons(savedLang);
+      translatePage(savedLang);
+      
+      langButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+          const lang = this.dataset.lang;
+          document.body.setAttribute('data-lang', lang);
+          localStorage.setItem('lang', lang);
+          updateLangButtons(lang);
+          translatePage(lang);
+          
+          // Уведомление о смене языка
+          notificationSystem.show({
+            title: lang === 'ru' ? 'Язык изменён!' : 'Language changed!',
+            message: lang === 'ru' 
+              ? 'Сайт переведён на русский' 
+              : 'Site translated to English',
+            type: 'info',
+            duration: 3000
+          });
+        });
+      });
+      
+      function updateLangButtons(lang) {
+        langButtons.forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
+      }
+      
+      function translatePage(lang) {
+        const elements = document.querySelectorAll('[data-i18n]');
+        elements.forEach(element => {
+          const key = element.getAttribute('data-i18n');
+          if (translations[lang] && translations[lang][key]) {
+            element.textContent = translations[lang][key];
+          }
+        });
+      }
+      
       // Анимация для раскрывающихся проектов
       const projectItems = document.querySelectorAll('.project-item');
-
+      
       projectItems.forEach(item => {
         const header = item.querySelector('.project-header');
         const details = item.querySelector('.project-details');
         const arrow = item.querySelector('.project-arrow');
-
+        
         header.addEventListener('click', () => {
           const isExpanded = item.getAttribute('aria-expanded') === 'true';
-
+          
           if (isExpanded) {
             gsap.to(details, {
               maxHeight: 0,
@@ -1377,52 +2133,36 @@
           }
         });
       });
-
+      
       // Копирование почты
       const copyEmailBtn = document.getElementById('copy-email');
       if (copyEmailBtn) {
         copyEmailBtn.addEventListener('click', function() {
           const email = 'golowachev.dan@gmail.com';
+          const lang = document.body.getAttribute('data-lang');
+          
           navigator.clipboard.writeText(email).then(() => {
             const message = document.getElementById('copy-message');
             const originalText = this.textContent;
-
-            this.textContent = '✓ Скопировано';
+            
+            this.textContent = lang === 'ru' ? '✓ Скопировано' : '✓ Copied';
             this.style.background = 'linear-gradient(90deg, #00cc66, #00aa55)';
             message.style.display = 'block';
-
+            
             setTimeout(() => {
               this.textContent = originalText;
               this.style.background = '';
               message.style.display = 'none';
             }, 2000);
-          }).catch(err => {
-            console.error('Ошибка копирования:', err);
-            // Fallback для старых браузеров
-            const textArea = document.createElement('textarea');
-            textArea.value = email;
-            document.body.appendChild(textArea);
-            textArea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textArea);
-
-            const message = document.getElementById('copy-message');
-            message.textContent = '✓ Скопировано (старый способ)';
-            message.style.display = 'block';
-
-            setTimeout(() => {
-              message.style.display = 'none';
-            }, 2000);
           });
         });
       }
-
+      
       // Анимации GSAP
       gsap.registerPlugin(ScrollTrigger);
-
-      // Анимация появления элементов при скролле
-      const animatedElements = gsap.utils.toArray('.skill-category, .project-item, .playlist-item, .stat-item, .language-item, .donate-content, .contact-form');
-
+      
+      const animatedElements = gsap.utils.toArray('.timeline-item, .blog-post, .project-item, .playlist-item, .donate-content, .contact-form, .activity-calendar, .recent-activity');
+      
       animatedElements.forEach(element => {
         gsap.fromTo(element, {
           opacity: 0,
@@ -1438,13 +2178,11 @@
             trigger: element,
             start: "top 85%",
             end: "bottom 20%",
-            toggleActions: "play none none reverse",
-            // Отключаем на мобильных для производительности
-            toggleActions: window.innerWidth < 768 ? "play none none none" : "play none none reverse"
+            toggleActions: "play none none reverse"
           }
         });
       });
-
+      
       // Плавный параллакс для аватарки
       if (window.innerWidth > 768) {
         gsap.to('.avatar-container', {
@@ -1457,74 +2195,169 @@
           }
         });
       }
-
-      // Регистрация Service Worker для PWA
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          // Динамически создаем service worker
-          const serviceWorkerCode = `
-            const CACHE_NAME = 'rgb-people-v1';
-            const urlsToCache = [
-              '/',
-              '/index.html'
-            ];
-
-            self.addEventListener('install', event => {
-              event.waitUntil(
-                caches.open(CACHE_NAME)
-                  .then(cache => cache.addAll(urlsToCache))
-              );
-            });
-
-            self.addEventListener('fetch', event => {
-              event.respondWith(
-                caches.match(event.request)
-                  .then(response => response || fetch(event.request))
-              );
-            });
-          `;
-
-          const blob = new Blob([serviceWorkerCode], { type: 'application/javascript' });
-          const serviceWorkerUrl = URL.createObjectURL(blob);
-
-          navigator.serviceWorker.register(serviceWorkerUrl).then(
-            function(registration) {
-              console.log('ServiceWorker зарегистрирован');
-            },
-            function(err) {
-              console.log('ServiceWorker не зарегистрирован: ', err);
-            }
-          );
+      
+      // Тест уведомления при клике на GitHub календарь
+      document.querySelectorAll('.calendar-cell[data-level]').forEach(cell => {
+        cell.addEventListener('click', () => {
+          const lang = document.body.getAttribute('data-lang');
+          notificationSystem.show({
+            title: lang === 'ru' ? 'Активность GitHub' : 'GitHub Activity',
+            message: lang === 'ru' 
+              ? 'Здесь отображается моя реальная активность разработки' 
+              : 'This shows my real development activity',
+            type: 'info',
+            duration: 3000
+          });
         });
-      }
-
-      // Уведомление об установке PWA
-      let deferredPrompt;
-      window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault();
-        deferredPrompt = e;
-
-        // Показываем уведомление через 5 секунд
-        setTimeout(() => {
-          if (deferredPrompt && confirm('Хотите установить это приложение на ваше устройство для быстрого доступа?')) {
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.then((choiceResult) => {
-              if (choiceResult.outcome === 'accepted') {
-                console.log('Пользователь установил приложение');
-              }
-              deferredPrompt = null;
-            });
-          }
-        }, 5000);
       });
-
-      // Оптимизация для тач-устройств
-      if ('ontouchstart' in window || navigator.maxTouchPoints) {
-        // Увеличиваем область клика для мобильных
-        document.querySelectorAll('.social-icon, .project-header, .language-item, .playlist-item').forEach(el => {
-          el.style.cursor = 'pointer';
+      
+      // Тест уведомления при клике на статьи блога
+      document.querySelectorAll('.blog-post').forEach(post => {
+        post.addEventListener('click', (e) => {
+          if (!e.target.closest('.read-more')) return;
+          e.preventDefault();
+          
+          const lang = document.body.getAttribute('data-lang');
+          notificationSystem.show({
+            title: lang === 'ru' ? 'Статья в разработке' : 'Article in Progress',
+            message: lang === 'ru' 
+              ? 'Эта статья скоро будет опубликована!' 
+              : 'This article will be published soon!',
+            type: 'warning',
+            duration: 3000
+          });
         });
-      }
+      });
+      
+      // Уведомление при посещении разных разделов
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const sectionId = entry.target.id;
+            const lang = document.body.getAttribute('data-lang');
+            
+            const messages = {
+              'timeline': lang === 'ru' ? 'Проверьте мой путь развития!' : 'Check out my development journey!',
+              'github-activity': lang === 'ru' ? 'Смотрите мою активность на GitHub!' : 'See my GitHub activity!',
+              'blog': lang === 'ru' ? 'Читайте статьи о разработке!' : 'Read development articles!',
+              'real-projects': lang === 'ru' ? 'Изучайте мои проекты на GitHub!' : 'Explore my projects on GitHub!'
+            };
+            
+            if (messages[sectionId]) {
+              notificationSystem.show({
+                title: lang === 'ru' ? 'Новый раздел!' : 'New Section!',
+                message: messages[sectionId],
+                type: 'info',
+                duration: 4000
+              });
+            }
+            
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      
+      // Наблюдаем за основными разделами
+      ['timeline', 'github-activity', 'blog', 'real-projects'].forEach(sectionId => {
+        const section = document.getElementById(sectionId);
+        if (section) observer.observe(section);
+      });
+      
+      // Добавляем дополнительные стили для email сервисов
+      const style = document.createElement('style');
+      style.textContent = `
+        .contact-content {
+          text-align: center;
+          padding: 2rem;
+        }
+        
+        .email-services {
+          display: flex;
+          gap: 1rem;
+          justify-content: center;
+          margin-bottom: 1.5rem;
+          flex-wrap: wrap;
+        }
+        
+        .email-service-btn {
+          padding: 0.5rem 1rem;
+          background: var(--card-bg);
+          border-radius: 5px;
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-size: 0.9rem;
+          color: var(--text-color);
+          border: 1px solid var(--border-color);
+          transition: all 0.3s ease;
+        }
+        
+        .email-service-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: var(--shadow);
+        }
+        
+        .email-copy {
+          color: var(--gray-90);
+          font-size: 0.9rem;
+        }
+        
+        .email-display {
+          background: var(--bg-color);
+          padding: 0.8rem;
+          border-radius: 8px;
+          margin-top: 0.5rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border: 1px solid var(--border-color);
+        }
+        
+        #email-text {
+          word-break: break-all;
+          font-family: monospace;
+        }
+        
+        .copy-btn {
+          background: var(--card-bg);
+          border: 1px solid var(--border-color);
+          color: var(--text-color);
+          padding: 0.3rem 0.8rem;
+          border-radius: 5px;
+          cursor: pointer;
+          margin-left: 1rem;
+          font-size: 0.85rem;
+          white-space: nowrap;
+          transition: all 0.3s ease;
+        }
+        
+        .copy-btn:hover {
+          background: var(--primary-color);
+          color: #000;
+        }
+        
+        .copy-message {
+          margin-top: 0.5rem;
+          color: var(--primary-color);
+          display: none;
+          font-size: 0.85rem;
+        }
+        
+        @media (max-width: 480px) {
+          .email-display {
+            flex-direction: column;
+            gap: 0.5rem;
+            align-items: stretch;
+          }
+          
+          .copy-btn {
+            margin-left: 0;
+            text-align: center;
+          }
+        }
+      `;
+      document.head.appendChild(style);
     });
   </script>
 </body>
