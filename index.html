@@ -433,6 +433,104 @@
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
     
+    /* Skills Section */
+    .skills-section-large {
+      background: linear-gradient(135deg, rgba(0, 255, 255, 0.05), rgba(255, 0, 128, 0.05));
+    }
+    
+    .skills-title {
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      text-align: center;
+      margin-bottom: 3rem;
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    
+    .skill-category {
+      border-radius: 15px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .skill-category:hover {
+      transform: translateY(-5px);
+    }
+    
+    .skill-header {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .skill-category-title {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      margin: 0;
+    }
+    
+    .skill-category-description {
+      color: var(--gray-90);
+      line-height: 1.8;
+      font-size: 1.1rem;
+    }
+    
+    .languages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    
+    .language-item {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .language-name {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+    
+    .stat-item {
+      text-align: center;
+      padding: 1.5rem;
+      border-radius: 15px;
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border-color);
+    }
+    
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+      color: var(--gray-90);
+      font-size: 0.9rem;
+    }
+    
     /* Timeline */
     .timeline-title {
       font-size: clamp(2rem, 5vw, 2.8rem);
@@ -806,23 +904,6 @@
       margin: 0;
     }
     
-    .project-links {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    
-    .project-link {
-      color: var(--text-color);
-      font-size: 1.2rem;
-      transition: all 0.3s ease;
-    }
-    
-    .project-link:hover {
-      color: var(--primary-color);
-      transform: scale(1.1);
-    }
-    
     .project-stats {
       display: flex;
       align-items: center;
@@ -867,23 +948,27 @@
       color: var(--primary-color);
     }
     
-    .project-action-btn {
+    .project-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .project-link {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 0.8rem 1.5rem;
+      gap: 8px;
+      padding: 0.6rem 1.2rem;
       background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
       color: white;
       text-decoration: none;
       border-radius: 8px;
       font-weight: 500;
       transition: all 0.3s ease;
-      border: none;
-      cursor: pointer;
       font-size: 0.9rem;
     }
     
-    .project-action-btn:hover {
+    .project-link:hover {
       transform: translateY(-2px);
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     }
@@ -1125,6 +1210,18 @@
       .project-arrow {
         align-self: flex-end;
       }
+      
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .languages-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
     
     @media (max-width: 480px) {
@@ -1162,6 +1259,14 @@
         flex-direction: column;
         gap: 1rem;
       }
+      
+      .languages-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -1184,18 +1289,16 @@
     <!-- HERO -->
     <section id="hero" class="section hero-section">
       <div class="hero-inner">
-        <div class="mb-12 flex justify-center">
-          <div class="avatar-container" aria-hidden="true">
-            <picture>
-              <source srcset="https://static-cdn.jtvnw.net/jtv_user_pictures/830f3ba7-517f-4ded-85be-fdb70c406b67-profile_image-70x70.png" type="image/png">
-              <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/830f3ba7-517f-4ded-85be-fdb70c406b67-profile_image-70x70.png" 
-                   alt="RGB_people" 
-                   class="avatar-image" 
-                   loading="lazy"
-                   width="150"
-                   height="150">
-            </picture>
-          </div>
+        <div class="avatar-container" aria-hidden="true">
+          <picture>
+            <source srcset="https://static-cdn.jtvnw.net/jtv_user_pictures/830f3ba7-517f-4ded-85be-fdb70c406b67-profile_image-70x70.png" type="image/png">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/830f3ba7-517f-4ded-85be-fdb70c406b67-profile_image-70x70.png" 
+                 alt="RGB_people" 
+                 class="avatar-image" 
+                 loading="lazy"
+                 width="150"
+                 height="150">
+          </picture>
         </div>
 
         <h1 class="hero-title">
@@ -1241,18 +1344,125 @@
       </div>
     </section>
 
+    <!-- SKILLS -->
+    <section id="skills" class="section skills-section-large">
+      <div class="skills-container">
+        <h2 class="skills-title neon-text">Мои навыки</h2>
+
+        <div class="skills-grid">
+          <div class="skill-category glass-effect">
+            <div class="skill-header">
+              <h3 class="skill-category-title">Разработка ПО</h3>
+            </div>
+            <div class="skill-content">
+              <p class="skill-category-description">
+                Создание программного обеспечения различной сложности.<br><br>
+                - <strong>Системное программирование</strong><br>
+                - <strong>Веб-разработка</strong><br>
+                - <strong>AI kamet для ОС</strong>
+              </p>
+            </div>
+          </div>
+
+          <div class="skill-category glass-effect">
+            <div class="skill-header">
+              <h3 class="skill-category-title">Технологии</h3>
+            </div>
+            <div class="skill-content">
+              <p class="skill-category-description">
+                - <strong>HTML/CSS/JavaScript</strong><br>
+                - <strong>Python</strong><br>
+                - <strong>C/C++</strong><br>
+                - <strong>Assembler</strong><br>
+                - <strong>Java</strong><br>
+                - <strong>Базы данных</strong>
+              </p>
+            </div>
+          </div>
+
+          <div class="skill-category glass-effect">
+            <div class="skill-header">
+              <h3 class="skill-category-title">Операционные системы</h3>
+            </div>
+            <div class="skill-content">
+              <p class="skill-category-description">
+                Разработка и исследование операционных систем.<br><br>
+                - <strong>Разработка ОС</strong><br>
+                - <strong>AI kamet для ОС</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="languages-grid">
+          <div class="language-item">
+            <div class="social-icon glass-effect" style="color: #e44d26;">
+              <i class="fab fa-html5"></i>
+            </div>
+            <div class="language-name">HTML</div>
+          </div>
+
+          <div class="language-item">
+            <div class="social-icon glass-effect" style="color: #f7df1e;">
+              <i class="fab fa-js"></i>
+            </div>
+            <div class="language-name">JavaScript</div>
+          </div>
+
+          <div class="language-item">
+            <div class="social-icon glass-effect" style="color: #00599c;">
+              <i class="fas fa-code"></i>
+            </div>
+            <div class="language-name">C</div>
+          </div>
+
+          <div class="language-item">
+            <div class="social-icon glass-effect" style="color: #6d4ba4;">
+              <i class="fas fa-microchip"></i>
+            </div>
+            <div class="language-name">Assembler</div>
+          </div>
+
+          <div class="language-item">
+            <div class="social-icon glass-effect" style="color: #ed8b00;">
+              <i class="fab fa-java"></i>
+            </div>
+            <div class="language-name">Java</div>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Запущенных проекта</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">0</div>
+            <div class="stat-label">Пользователей</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">&lt;1</div>
+            <div class="stat-label">Года разработки</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">75%</div>
+            <div class="stat-label">Самообучение</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- REAL PROJECTS -->
     <section id="real-projects" class="section">
       <div class="projects-section">
         <h2 class="projects-title neon-text" data-i18n="projects_title">Мои проекты</h2>
 
-        <div class="project-item glass-effect" tabindex="0" role="button" aria-expanded="false">
+        <div class="project-item glass-effect" tabindex="0" role="button" aria-expanded="false" data-project="1">
           <div class="project-header">
             <div class="project-header-left">
               <h3 class="project-title">3D model lib</h3>
-              <div class="project-links">
-                <i class="fab fa-github"></i>
-                </a>
+              <div class="project-stats">
+                <span>Java • OpenGL • Minecraft API</span>
               </div>
             </div>
             <div class="project-arrow">
@@ -1269,18 +1479,25 @@
                 <span class="tech-tag">Java</span>
                 <span class="tech-tag">OpenGL</span>
                 <span class="tech-tag">Minecraft API</span>
+                <span class="tech-tag">3D Graphics</span>
+                <span class="tech-tag">Gradle</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/RGB-people/3d-model-lib" target="_blank" rel="noopener noreferrer" class="project-link">
+                  <i class="fab fa-github"></i>
+                  Исходный код
+                </a>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="project-item glass-effect" tabindex="0" role="button" aria-expanded="false">
+        <div class="project-item glass-effect" tabindex="0" role="button" aria-expanded="false" data-project="2">
           <div class="project-header">
             <div class="project-header-left">
               <h3 class="project-title">kamet</h3>
-              <div class="project-links">
-                <i class="fab fa-github"></i>
-                </a>
+              <div class="project-stats">
+                <span>Rust • AI • ОС</span>
               </div>
             </div>
             <div class="project-arrow">
@@ -1296,18 +1513,19 @@
               <div class="project-tech">
                 <span class="tech-tag">Rust</span>
                 <span class="tech-tag">AI</span>
-                <span class="tech-tag">OS</span>
+                <span class="tech-tag">Machine Learning</span>
+                <span class="tech-tag">OS Integration</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="project-item glass-effect" tabindex="0" role="button" aria-expanded="false">
+        <div class="project-item glass-effect" tabindex="0" role="button" aria-expanded="false" data-project="3">
           <div class="project-header">
             <div class="project-header-left">
               <h3 class="project-title">Amethyst OS</h3>
-              <div class="project-links">
-                <i class="fab fa-github"></i>
+              <div class="project-stats">
+                <span>Assembler • C • OS Development</span>
               </div>
             </div>
             <div class="project-arrow">
@@ -1319,17 +1537,21 @@
 
           <div id="project3-details" class="project-details" aria-hidden="true">
             <div class="project-content">
-              <p class="project-description" data-i18n="project3_desc">Не просто ОС, а что-то более</p>
+              <p class="project-description" data-i18n="project3_desc">Не просто ОС, а что более</p>
               <div class="project-tech">
                 <span class="tech-tag">Assembler</span>
                 <span class="tech-tag">C</span>
                 <span class="tech-tag">OS Development</span>
                 <span class="tech-tag">Bootloader</span>
+                <span class="tech-tag">Kernel</span>
+                <span class="tech-tag">AMK</span>
+                <span class="tech-tag">AmOS</span>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
     <!-- DONATE -->
     <section id="donate" class="section">
@@ -1369,42 +1591,11 @@
             <h3 class="contact-subtitle" data-i18n="contact_subtitle">Напишите мне напрямую</h3>
             
             <!-- Основная mailto ссылка -->
-            <a href="mailto:golowachev.dan@gmail.com?subject=Сообщение%20с%20сайта%20RGB_people&body=Здравствуйте,%0D%0A%0D%0A" 
+            <a href="mailto:golowachev.dan@gmail.com?subject=Сообщение%20с%20сайта&body=" 
                class="submit-btn">
               <i class="fas fa-envelope"></i>
               <span data-i18n="contact_button">Написать на почту</span>
-            </a>
-            
-            <!-- Кнопки для разных почтовых сервисов -->
-            <div class="email-services">
-              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=golowachev.dan@gmail.com&su=Сообщение%20с%20сайта%20RGB_people&body=Здравствуйте," 
-                 target="_blank"
-                 class="email-service-btn">
-                <i class="fab fa-google"></i>
-                Gmail
-              </a>
-              
-              <a href="https://mail.yandex.ru/compose?to=golowachev.dan@gmail.com&subject=Сообщение%20с%20сайта%20RGB_people&body=Здравствуйте,"
-                 target="_blank"
-                 class="email-service-btn">
-                <i class="fab fa-yandex"></i>
-                Яндекс
-              </a>
-            </div>
-            
-            <!-- Копирование почты -->
-            <div class="email-copy">
-              <p data-i18n="contact_copy">Или скопируйте адрес:</p>
-              <div class="email-display">
-                <span id="email-text">golowachev.dan@gmail.com</span>
-                <button id="copy-email" class="copy-btn">
-                  <span data-i18n="contact_copy_button">Копировать</span>
-                </button>
-              </div>
-              <p id="copy-message" class="copy-message">
-                <span data-i18n="contact_copy_success">✓ Почта скопирована в буфер обмена</span>
-              </p>
-            </div>
+            <div id="copy-message" class="copy-message" data-i18n="contact_copy_success"></div>
           </div>
         </div>
       </div>
@@ -1440,23 +1631,6 @@
         </div>
       </div>
     </section>
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="email-contact">
-        <i class="fas fa-envelope"></i>
-        <span data-i18n="footer_email">Почта для связи: golowachev.dan@gmail.com</span>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <div class="footer-copyright">
-        © 2024 RGB_people. <span data-i18n="footer_rights">Все права защищены.</span>
-      </div>
-    </div>
-  </footer>
 
   <!-- Скрипты -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -1469,47 +1643,11 @@
         // Общие
         subtitle: "Разработчик ПО • Создатель инновационных проектов",
         
-        // Timeline
-        timeline_title: "Мой путь развития",
-        timeline_item1_title: "Начало программирования",
-        timeline_item1_desc: "Изучение основ Python и создание первых скриптов",
-        timeline_item2_title: "Первый проект - 3D model lib",
-        timeline_item2_desc: "Начал разработку библиотеки для импорта 3D моделей в Minecraft",
-        timeline_item3_title: "Изучение системного программирования",
-        timeline_item3_desc: "Начал изучение C, Assembler и основ операционных систем",
-        timeline_item4_title: "Начало разработки Amethyst OS",
-        timeline_item4_desc: "Запустил проект экспериментальной операционной системы нового поколения",
-        timeline_item5_title: "Проект kamet - AI для ОС",
-        timeline_item5_desc: "Начал разработку искусственного интеллекта для Amethyst OS",
-        
-        // GitHub Activity
-        activity_title: "Активность на GitHub",
-        activity_subtitle: "Мой вклад в open-source проекты",
-        calendar_title: "График активности",
-        stat_commits: "коммитов",
-        stat_streak: "день подряд",
-        stat_best: "лучшая серия",
-        recent_activity: "Недавняя активность",
-        
-        // Blog
-        blog_title: "Статьи о разработке",
-        blog_category_os: "Операционные системы",
-        blog_category_3d: "3D Графика",
-        blog_category_ai: "Искусственный интеллект",
-        blog_post1_title: "Разработка Amethyst OS с нуля",
-        blog_post1_excerpt: "Как я создаю свою операционную систему, начиная с загрузчика...",
-        blog_post2_title: "Импорт 3D моделей в Minecraft",
-        blog_post2_excerpt: "Технические детали работы библиотеки 3D model lib...",
-        blog_post3_title: "kamet - AI для операционных систем",
-        blog_post3_excerpt: "Как интегрировать искусственный интеллект в ОС...",
-        blog_read_time: "мин чтения",
-        blog_read_more: "Читать →",
-        
         // Projects
         projects_title: "Мои проекты",
         project1_desc: "Мод-библиотека для импорта 3D моделей (.obj .bbmodel .gltf .mdl (формат для Half-Life) и .fbx) в майнкрафт",
         project2_desc: "AI для Amethyst OS - система искусственного интеллекта для управления операционной системой",
-        project3_desc: "Экспериментальная операционная система нового поколения с собственным ядром, уникальной архитектурой и инновационными возможностями",
+        project3_desc: "Не просто ОС, а что-то более",
         
         // Donate
         donate_title: "Поддержать автора",
@@ -1523,62 +1661,19 @@
         contact_title: "Связаться со мной",
         contact_subtitle: "Напишите мне напрямую",
         contact_button: "Написать на почту",
-        contact_copy: "Или скопируйте адрес:",
-        contact_copy_button: "Копировать",
-        contact_copy_success: "✓ Почта скопирована в буфер обмена",
         
         // Playlist
         playlist_title: "Мой плейлист",
-        
-        // Footer
-        footer_email: "Почта для связи: golowachev.dan@gmail.com",
-        footer_rights: "Все права защищены."
       },
       en: {
         // General
         subtitle: "Software Developer • Creator of Innovative Projects",
         
-        // Timeline
-        timeline_title: "My Development Journey",
-        timeline_item1_title: "Beginning of Programming",
-        timeline_item1_desc: "Learning Python basics and creating first scripts",
-        timeline_item2_title: "First Project - 3D model lib",
-        timeline_item2_desc: "Started developing a library for importing 3D models into Minecraft",
-        timeline_item3_title: "Learning System Programming",
-        timeline_item3_desc: "Started studying C, Assembler and operating system fundamentals",
-        timeline_item4_title: "Beginning of Amethyst OS Development",
-        timeline_item4_desc: "Launched next-generation experimental operating system project",
-        timeline_item5_title: "kamet Project - AI for OS",
-        timeline_item5_desc: "Started developing artificial intelligence for Amethyst OS",
-        
-        // GitHub Activity
-        activity_title: "GitHub Activity",
-        activity_subtitle: "My contributions to open-source projects",
-        calendar_title: "Activity Graph",
-        stat_commits: "commits",
-        stat_streak: "day streak",
-        stat_best: "best streak",
-        recent_activity: "Recent Activity",
-        
-        // Blog
-        blog_title: "Development Articles",
-        blog_category_os: "Operating Systems",
-        blog_category_3d: "3D Graphics",
-        blog_category_ai: "Artificial Intelligence",
-        blog_post1_title: "Developing Amethyst OS from Scratch",
-        blog_post1_excerpt: "How I'm creating my own operating system, starting from the bootloader...",
-        blog_post2_title: "Importing 3D Models into Minecraft",
-        blog_post2_excerpt: "Technical details of 3D model lib library work...",
-        blog_post3_title: "kamet - AI for Operating Systems",
-        blog_post3_excerpt: "How to integrate artificial intelligence into OS...",
-        blog_read_time: "min read",
-        blog_read_more: "Read →",
-        
         // Projects
         projects_title: "My Projects",
         project1_desc: "Mod library for importing 3D models (.obj .bbmodel .gltf .mdl (Half-Life format) and .fbx) into Minecraft",
-        project2_desc: "AI for Amethyst OS - artificial intelligence system for operating system management",
-        project3_desc: "Next-generation experimental operating system with its own kernel, unique architecture and innovative features",
+        project2_desc: "AI for Amethyst OS",
+        project3_desc: "Not just an OS, but something more",
         
         // Donate
         donate_title: "Support the Author",
@@ -1592,32 +1687,74 @@
         contact_title: "Contact Me",
         contact_subtitle: "Write to me directly",
         contact_button: "Write to Email",
-        contact_copy: "Or copy the address:",
-        contact_copy_button: "Copy",
-        contact_copy_success: "✓ Email copied to clipboard",
-        
+
         // Playlist
         playlist_title: "My Playlist",
-        
-        // Footer
-        footer_email: "Contact email: golowachev.dan@gmail.com",
-        footer_rights: "All rights reserved."
       }
     };
+
+    // ==================== СИСТЕМА УВЕДОМЛЕНИЙ ====================
+    class NotificationSystem {
+      constructor() {
+        this.container = document.getElementById('notification-container');
+      }
+      
+      show({ title, message, type = 'info', duration = 5000 }) {
+        const notification = document.createElement('div');
+        notification.className = 'notification glass-effect';
+        
+        const icons = {
+          info: 'fas fa-info-circle',
+          success: 'fas fa-check-circle',
+          warning: 'fas fa-exclamation-triangle',
+          error: 'fas fa-times-circle'
+        };
+        
+        notification.innerHTML = `
+          <div class="notification-icon">
+            <i class="${icons[type] || icons.info}"></i>
+          </div>
+          <div class="notification-content">
+            <div class="notification-title">${title}</div>
+            <div class="notification-message">${message}</div>
+          </div>
+          <button class="notification-close" aria-label="Закрыть">
+            <i class="fas fa-times"></i>
+          </button>
+        `;
+        
+        this.container.appendChild(notification);
+        
+        const closeBtn = notification.querySelector('.notification-close');
+        const closeNotification = () => {
+          notification.classList.add('hiding');
+          setTimeout(() => notification.remove(), 300);
+        };
+        
+        closeBtn.addEventListener('click', closeNotification);
+        
+        if (duration > 0) {
+          setTimeout(closeNotification, duration);
+        }
+      }
+    }
 
     // ==================== ОСНОВНОЙ СКРИПТ ====================
     document.addEventListener('DOMContentLoaded', function() {
       // Инициализация систем
       const notificationSystem = new NotificationSystem();
-      const githubActivity = new GitHubActivity();
       
       // Переключение темы
       const themeToggle = document.getElementById('theme-toggle');
       const themeIcon = themeToggle.querySelector('i');
       
-      const savedTheme = localStorage.getItem('theme') || 'dark';
-      document.body.setAttribute('data-theme', savedTheme);
-      updateThemeIcon(savedTheme);
+      // Проверяем сохраненную тему или используем системную
+      const savedTheme = localStorage.getItem('theme');
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      const currentTheme = savedTheme || systemTheme;
+      
+      document.body.setAttribute('data-theme', currentTheme);
+      updateThemeIcon(currentTheme);
       
       themeToggle.addEventListener('click', function() {
         const currentTheme = document.body.getAttribute('data-theme');
@@ -1686,7 +1823,7 @@
         });
       }
       
-      // Анимация для раскрывающихся проектов
+      // Раскрывающиеся проекты
       const projectItems = document.querySelectorAll('.project-item');
       
       projectItems.forEach(item => {
@@ -1694,57 +1831,58 @@
         const details = item.querySelector('.project-details');
         const arrow = item.querySelector('.project-arrow');
         
+        // Открываем первый проект по умолчанию
+        if (item.dataset.project === "1") {
+          details.style.maxHeight = details.scrollHeight + 'px';
+          item.setAttribute('aria-expanded', 'true');
+          arrow.style.transform = 'rotate(180deg)';
+        }
+        
         header.addEventListener('click', () => {
           const isExpanded = item.getAttribute('aria-expanded') === 'true';
           
           if (isExpanded) {
-            gsap.to(details, {
-              maxHeight: 0,
-              duration: 0.5,
-              ease: "power2.inOut"
-            });
+            details.style.maxHeight = 0;
             item.setAttribute('aria-expanded', 'false');
             arrow.style.transform = 'rotate(0deg)';
           } else {
-            gsap.to(details, {
-              maxHeight: details.scrollHeight + 'px',
-              duration: 0.5,
-              ease: "power2.inOut"
-            });
+            details.style.maxHeight = details.scrollHeight + 'px';
             item.setAttribute('aria-expanded', 'true');
             arrow.style.transform = 'rotate(180deg)';
+          }
+        });
+        
+        // Поддержка клавиатуры
+        item.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            header.click();
           }
         });
       });
       
       // Копирование почты
       const copyEmailBtn = document.getElementById('copy-email');
-      if (copyEmailBtn) {
-        copyEmailBtn.addEventListener('click', function() {
-          const email = 'golowachev.dan@gmail.com';
-          const lang = document.body.getAttribute('data-lang');
-          
-          navigator.clipboard.writeText(email).then(() => {
-            const message = document.getElementById('copy-message');
-            const originalText = this.textContent;
-            
-            this.textContent = lang === 'ru' ? '✓ Скопировано' : '✓ Copied';
-            this.style.background = 'linear-gradient(90deg, #00cc66, #00aa55)';
-            message.style.display = 'block';
-            
-            setTimeout(() => {
-              this.textContent = originalText;
-              this.style.background = '';
-              message.style.display = 'none';
-            }, 2000);
-          });
-        });
-      }
+      const copyMessage = document.getElementById('copy-message');
       
+      copyEmailBtn.addEventListener('click', function() {
+        const email = 'golowachev.dan@gmail.com';
+        const lang = document.body.getAttribute('data-lang');
+        
+        navigator.clipboard.writeText(email).then(() => {
+          const originalText = this.textContent;
+          const originalBackground = this.style.background;
+          setTimeout(() => {
+            this.textContent = originalText;
+            this.style.background = originalBackground;
+            copyMessage.style.display = 'none';
+          }, 2000);
+        }
       // Анимации GSAP
       gsap.registerPlugin(ScrollTrigger);
       
-      const animatedElements = gsap.utils.toArray('.timeline-item, .blog-post, .project-item, .playlist-item, .donate-content, .contact-form, .activity-calendar, .recent-activity');
+      // Анимация для элементов
+      const animatedElements = gsap.utils.toArray('.skill-category, .language-item, .stat-item, .project-item, .playlist-item, .donate-content, .contact-form');
       
       animatedElements.forEach(element => {
         gsap.fromTo(element, {
@@ -1766,181 +1904,42 @@
         });
       });
       
-      // Плавный параллакс для аватарки
-      if (window.innerWidth > 768) {
-        gsap.to('.avatar-container', {
-          y: 30,
+      // Анимация заголовков
+      gsap.utils.toArray('.skills-title, .projects-title, .donate-title, .contact-title, .playlist-title').forEach(title => {
+        gsap.fromTo(title, {
+          opacity: 0,
+          y: 30
+        }, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power2.out",
           scrollTrigger: {
-            trigger: '.avatar-container',
-            start: "top top",
-            end: "bottom top",
-            scrub: true
+            trigger: title,
+            start: "top 90%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse"
           }
         });
-      }
-      
-      // Тест уведомления при клике на GitHub календарь
-      document.querySelectorAll('.calendar-cell[data-level]').forEach(cell => {
-        cell.addEventListener('click', () => {
-          const lang = document.body.getAttribute('data-lang');
-          notificationSystem.show({
-            title: lang === 'ru' ? 'Активность GitHub' : 'GitHub Activity',
-            message: lang === 'ru' 
-              ? 'Здесь отображается моя реальная активность разработки' 
-              : 'This shows my real development activity',
-            type: 'info',
-            duration: 3000
-          });
-        });
       });
       
-      // Тест уведомления при клике на статьи блога
-      document.querySelectorAll('.blog-post').forEach(post => {
-        post.addEventListener('click', (e) => {
-          if (!e.target.closest('.read-more')) return;
-          e.preventDefault();
-          
-          const lang = document.body.getAttribute('data-lang');
-          notificationSystem.show({
-            title: lang === 'ru' ? 'Статья в разработке' : 'Article in Progress',
-            message: lang === 'ru' 
-              ? 'Эта статья скоро будет опубликована!' 
-              : 'This article will be published soon!',
-            type: 'warning',
-            duration: 3000
-          });
-        });
-      });
-      
-      // Уведомление при посещении разных разделов
+      // Уведомление при посещении разделов
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             const sectionId = entry.target.id;
             const lang = document.body.getAttribute('data-lang');
             
-            const messages = {
-              'timeline': lang === 'ru' ? 'Проверьте мой путь развития!' : 'Check out my development journey!',
-              'github-activity': lang === 'ru' ? 'Смотрите мою активность на GitHub!' : 'See my GitHub activity!',
-              'blog': lang === 'ru' ? 'Читайте статьи о разработке!' : 'Read development articles!',
-              'real-projects': lang === 'ru' ? 'Изучайте мои проекты на GitHub!' : 'Explore my projects on GitHub!'
-            };
-            
-            if (messages[sectionId]) {
-              notificationSystem.show({
-                title: lang === 'ru' ? 'Новый раздел!' : 'New Section!',
-                message: messages[sectionId],
-                type: 'info',
-                duration: 4000
-              });
-            }
-            
             observer.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.5 });
+      }, { threshold: 0.3 });
       
       // Наблюдаем за основными разделами
-      ['timeline', 'github-activity', 'blog', 'real-projects'].forEach(sectionId => {
+      ['skills', 'real-projects', 'donate', 'contact', 'playlist'].forEach(sectionId => {
         const section = document.getElementById(sectionId);
         if (section) observer.observe(section);
       });
-      
-      // Добавляем дополнительные стили для email сервисов
-      const style = document.createElement('style');
-      style.textContent = `
-        .contact-content {
-          text-align: center;
-          padding: 2rem;
-        }
-        
-        .email-services {
-          display: flex;
-          gap: 1rem;
-          justify-content: center;
-          margin-bottom: 1.5rem;
-          flex-wrap: wrap;
-        }
-        
-        .email-service-btn {
-          padding: 0.5rem 1rem;
-          background: var(--card-bg);
-          border-radius: 5px;
-          text-decoration: none;
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          font-size: 0.9rem;
-          color: var(--text-color);
-          border: 1px solid var(--border-color);
-          transition: all 0.3s ease;
-        }
-        
-        .email-service-btn:hover {
-          transform: translateY(-2px);
-          box-shadow: var(--shadow);
-        }
-        
-        .email-copy {
-          color: var(--gray-90);
-          font-size: 0.9rem;
-        }
-        
-        .email-display {
-          background: var(--bg-color);
-          padding: 0.8rem;
-          border-radius: 8px;
-          margin-top: 0.5rem;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          border: 1px solid var(--border-color);
-        }
-        
-        #email-text {
-          word-break: break-all;
-          font-family: monospace;
-        }
-        
-        .copy-btn {
-          background: var(--card-bg);
-          border: 1px solid var(--border-color);
-          color: var(--text-color);
-          padding: 0.3rem 0.8rem;
-          border-radius: 5px;
-          cursor: pointer;
-          margin-left: 1rem;
-          font-size: 0.85rem;
-          white-space: nowrap;
-          transition: all 0.3s ease;
-        }
-        
-        .copy-btn:hover {
-          background: var(--primary-color);
-          color: #000;
-        }
-        
-        .copy-message {
-          margin-top: 0.5rem;
-          color: var(--primary-color);
-          display: none;
-          font-size: 0.85rem;
-        }
-        
-        @media (max-width: 480px) {
-          .email-display {
-            flex-direction: column;
-            gap: 0.5rem;
-            align-items: stretch;
-          }
-          
-          .copy-btn {
-            margin-left: 0;
-            text-align: center;
-          }
-        }
-      `;
-      document.head.appendChild(style);
     });
   </script>
 </body>
