@@ -909,15 +909,15 @@
     <!-- SKILLS -->
     <section id="skills" class="section skills-section-large">
       <div class="skills-container">
-        <h2 class="skills-title">Мои навыки</h2>
+        <h2 class="skills-title" data-i18n="skills_title">Мои навыки</h2>
 
         <div class="skills-grid">
           <div class="skill-category">
             <div class="skill-header">
-              <h3 class="skill-category-title">Разработка ПО</h3>
+              <h3 class="skill-category-title" data-i18n="skill1_title">Разработка ПО</h3>
             </div>
             <div class="skill-content">
-              <p class="skill-category-description">
+              <p class="skill-category-description" data-i18n="skill1_desc">
                 Создание программного обеспечения различной сложности.<br><br>
                 - <strong>Системное программирование</strong><br>
                 - <strong>Веб-разработка</strong><br>
@@ -928,10 +928,10 @@
 
           <div class="skill-category">
             <div class="skill-header">
-              <h3 class="skill-category-title">Технологии</h3>
+              <h3 class="skill-category-title" data-i18n="skill2_title">Технологии</h3>
             </div>
             <div class="skill-content">
-              <p class="skill-category-description">
+              <p class="skill-category-description" data-i18n="skill2_desc">
                 - <strong>HTML/CSS/JavaScript</strong><br>
                 - <strong>Python</strong><br>
                 - <strong>C/C++</strong><br>
@@ -944,10 +944,10 @@
 
           <div class="skill-category">
             <div class="skill-header">
-              <h3 class="skill-category-title">Операционные системы</h3>
+              <h3 class="skill-category-title" data-i18n="skill3_title">Операционные системы</h3>
             </div>
             <div class="skill-content">
-              <p class="skill-category-description">
+              <p class="skill-category-description" data-i18n="skill3_desc">
                 Разработка и исследование операционных систем.<br><br>
                 - <strong>Разработка ОС</strong><br>
                 - <strong>AI kamet для ОС</strong>
@@ -975,7 +975,11 @@
           <!-- Иконка CSS -->
           <div class="language-item">
             <div class="css-icon">
-              <i class="fab fa-css"></i>
+              <img src="https://w7.pngwing.com/pngs/945/441/png-transparent-web-development-cascading-style-sheets-html-logo-css3-storm-blue-angle-text.png" 
+                   alt="CSS3" 
+                   loading="lazy"
+                   width="35"
+                   height="35">
             </div>
             <div class="language-name">CSS</div>
           </div>
@@ -1005,19 +1009,19 @@
         <div class="stats-grid">
           <div class="stat-item">
             <div class="stat-number">3</div>
-            <div class="stat-label">Запущенных проекта</div>
+            <div class="stat-label" data-i18n="stat1_label">Запущенных проекта</div>
           </div>
           <div class="stat-item">
             <div class="stat-number">0</div>
-            <div class="stat-label">Пользователей</div>
+            <div class="stat-label" data-i18n="stat2_label">Пользователей</div>
           </div>
           <div class="stat-item">
             <div class="stat-number">&lt;1</div>
-            <div class="stat-label">Года разработки</div>
+            <div class="stat-label" data-i18n="stat3_label">Года разработки</div>
           </div>
           <div class="stat-item">
             <div class="stat-number">75%</div>
-            <div class="stat-label">Самообучение</div>
+            <div class="stat-label" data-i18n="stat4_label">Самообучение</div>
           </div>
         </div>
       </div>
@@ -1033,7 +1037,7 @@
             <div class="project-header-left">
               <h3 class="project-title">3D model lib</h3>
               <div class="project-stats">
-                <span>Java • OpenGL • Minecraft API • 3D Graphics • Gradle</span>
+                <span>Java • OpenGL • Minecraft API</span>
               </div>
             </div>
             <div class="project-arrow">
@@ -1056,7 +1060,7 @@
               <div class="project-links">
                 <a href="https://github.com/RGB-people/3d-model-lib" target="_blank" rel="noopener noreferrer" class="project-link">
                   <i class="fab fa-github"></i>
-                  Исходный код
+                  <span data-i18n="source_code">Исходный код</span>
                 </a>
               </div>
             </div>
@@ -1068,7 +1072,7 @@
             <div class="project-header-left">
               <h3 class="project-title">kamet</h3>
               <div class="project-stats">
-                <span>Rust • AI • Machine Learning • OS Integration</span>
+                <span>Rust • AI • ОС</span>
               </div>
             </div>
             <div class="project-arrow">
@@ -1096,7 +1100,7 @@
             <div class="project-header-left">
               <h3 class="project-title">Amethyst OS</h3>
               <div class="project-stats">
-                <span>Assembler • C • OS Development • Bootloader • Kernel • AMK • AMOS</span>
+                <span>Assembler • C • OS Development</span>
               </div>
             </div>
             <div class="project-arrow">
@@ -1169,7 +1173,7 @@
             
             <div class="email-info">
               <p style="color: var(--gray-90); font-size: 0.9rem; margin-top: 1rem;">
-                Или скопируйте почту: <strong>golowachev.dan@gmail.com</strong>
+                <span data-i18n="email_copy">Или скопируйте почту:</span> <strong>golowachev.dan@gmail.com</strong>
               </p>
             </div>
           </div>
@@ -1236,37 +1240,89 @@
       // Переключение языка
       const translations = {
         ru: {
+          // Общие
           subtitle: "Разработчик ПО • Создатель инновационных проектов",
+          
+          // Навыки
+          skills_title: "Мои навыки",
+          skill1_title: "Разработка ПО",
+          skill1_desc: "Создание программного обеспечения различной сложности.<br><br>- <strong>Системное программирование</strong><br>- <strong>Веб-разработка</strong><br>- <strong>AI kamet для ОС</strong>",
+          skill2_title: "Технологии",
+          skill2_desc: "- <strong>HTML/CSS/JavaScript</strong><br>- <strong>Python</strong><br>- <strong>C/C++</strong><br>- <strong>Assembler</strong><br>- <strong>Java</strong><br>- <strong>Базы данных</strong>",
+          skill3_title: "Операционные системы",
+          skill3_desc: "Разработка и исследование операционных систем.<br><br>- <strong>Разработка ОС</strong><br>- <strong>AI kamet для ОС</strong>",
+          
+          // Статистика
+          stat1_label: "Запущенных проекта",
+          stat2_label: "Пользователей",
+          stat3_label: "Года разработки",
+          stat4_label: "Самообучение",
+          
+          // Проекты
           projects_title: "Мои проекты",
           project1_desc: "Мод-библиотека для импорта 3D моделей (.obj .bbmodel .gltf .mdl (формат для Half-Life) и .fbx) в майнкрафт",
-          project2_desc: "AI для Amethyst OS",
+          project2_desc: "AI для Amethyst OS - система искусственного интеллекта для управления операционной системой",
           project3_desc: "Не просто ОС, а что-то более",
+          source_code: "Исходный код",
+          
+          // Поддержка
           donate_title: "Поддержать автора",
           donate_description: "Если вам нравятся мои проекты и вы хотите поддержать дальнейшую разработку:",
           donate_button: "Поддержать на DonationAlerts",
           donate_visa: "Visa/Mastercard",
           donate_qiwi: "QIWI",
           donate_yoomoney: "ЮMoney",
+          
+          // Контакты
           contact_title: "Связаться со мной",
           contact_subtitle: "Напишите мне напрямую",
           contact_button: "Написать на почту",
+          email_copy: "Или скопируйте почту:",
+          
+          // Плейлист
           playlist_title: "Мой плейлист",
         },
         en: {
+          // General
           subtitle: "Software Developer • Creator of Innovative Projects",
+          
+          // Skills
+          skills_title: "My Skills",
+          skill1_title: "Software Development",
+          skill1_desc: "Creating software of varying complexity.<br><br>- <strong>System Programming</strong><br>- <strong>Web Development</strong><br>- <strong>AI kamet for OS</strong>",
+          skill2_title: "Technologies",
+          skill2_desc: "- <strong>HTML/CSS/JavaScript</strong><br>- <strong>Python</strong><br>- <strong>C/C++</strong><br>- <strong>Assembler</strong><br>- <strong>Java</strong><br>- <strong>Databases</strong>",
+          skill3_title: "Operating Systems",
+          skill3_desc: "Development and research of operating systems.<br><br>- <strong>OS Development</strong><br>- <strong>AI kamet for OS</strong>",
+          
+          // Statistics
+          stat1_label: "Launched Projects",
+          stat2_label: "Users",
+          stat3_label: "Years of Development",
+          stat4_label: "Self-learning",
+          
+          // Projects
           projects_title: "My Projects",
           project1_desc: "Mod library for importing 3D models (.obj .bbmodel .gltf .mdl (Half-Life format) and .fbx) into Minecraft",
-          project2_desc: "AI for Amethyst OS",
+          project2_desc: "AI for Amethyst OS - artificial intelligence system for operating system management",
           project3_desc: "Not just an OS, but something more",
+          source_code: "Source Code",
+          
+          // Donate
           donate_title: "Support the Author",
           donate_description: "If you like my projects and want to support further development:",
           donate_button: "Support on DonationAlerts",
           donate_visa: "Visa/Mastercard",
           donate_qiwi: "QIWI",
           donate_yoomoney: "YooMoney",
+          
+          // Contact
           contact_title: "Contact Me",
           contact_subtitle: "Write to me directly",
           contact_button: "Write to Email",
+          email_copy: "Or copy the email:",
+          
+          // Playlist
           playlist_title: "My Playlist",
         }
       };
@@ -1286,7 +1342,7 @@
         elements.forEach(element => {
           const key = element.getAttribute('data-i18n');
           if (translations[lang] && translations[lang][key]) {
-            element.textContent = translations[lang][key];
+            element.innerHTML = translations[lang][key];
           }
         });
       }
